@@ -45,6 +45,10 @@ public abstract class Titan implements Attackee, Attacker, Mobil, Comparable<Tit
         return baseDamage;
     }
 
+    public int getDamage() {
+        return baseDamage;
+    }
+
     public int getHeightInMeters() {
         return heightInMeters;
     }
@@ -52,8 +56,14 @@ public abstract class Titan implements Attackee, Attacker, Mobil, Comparable<Tit
     public int getDistanceFromBase() {
         return distanceFromBase;
     }
+    public int getDistance() {
+        return distanceFromBase;
+    }
 
     public void setDistanceFromBase(int distanceFromBase) {
+        this.distanceFromBase = distanceFromBase;
+    }
+    public void setDistance(int distanceFromBase) {
         this.distanceFromBase = distanceFromBase;
     }
 
