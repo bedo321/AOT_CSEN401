@@ -13,16 +13,12 @@ package game.engine.weapons;
             this.price = price;
         }
         public WeaponRegistry(int code, int price, int damage, String name) {
-            this.code = code;
-            this.price = price;
+            this(code,price);
             this.damage = damage;
             this.name = name;
         }
         public WeaponRegistry(int code, int price, int damage, String name, int minRange, int maxRange) {
-            this.code = code;
-            this.price = price;
-            this.damage = damage;
-            this.name = name;
+            this(code, price, damage, name);
             this.minRange = minRange;
             this.maxRange = maxRange;
         }
