@@ -30,14 +30,12 @@ public class DataLoader {
             String[] properties = line.split(",");
             int code = Integer.parseInt(properties[0]);
             System.out.println(code);
-            if (properties.length == 4) {
-                WeaponRegistry weapon = new WeaponRegistry(code, Integer.parseInt(properties[1]), Integer.parseInt(properties[2]), properties[3]);
-                weaponProperties.put(code,weapon);
-            }
-            else {
-                WeaponRegistry weapon = new WeaponRegistry(code, Integer.parseInt(properties[1]), Integer.parseInt(properties[2]), properties[3], Integer.parseInt(properties[4]), Integer.parseInt(properties[5]));
-                weaponProperties.put(code,weapon);
-            }
+            WeaponRegistry weapon;
+            if (properties.length == 4)
+                weapon = new WeaponRegistry(code, Integer.parseInt(properties[1]), Integer.parseInt(properties[2]), properties[3]);
+            else
+                weapon = new WeaponRegistry(code, Integer.parseInt(properties[1]), Integer.parseInt(properties[2]), properties[3], Integer.parseInt(properties[4]), Integer.parseInt(properties[5]));
+            weaponProperties.put(code,weapon);
         }
         return weaponProperties;
     }
