@@ -6,11 +6,4 @@ public class WallTrap extends Weapon {
     public WallTrap(int baseDamage) {
         super(baseDamage);
     }
-
-
-    // should I implement getters and setters on static variables???
-    public static int getWeaponCode() {
-        return WEAPON_CODE;
-    }
-
 }
