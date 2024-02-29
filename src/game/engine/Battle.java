@@ -10,7 +10,7 @@ import java.util.*;
 import java.io.*;
 
 public class Battle {
-    private final static int[][] PHASES_APPROACHING_TITANS = new int[3][];
+    private final static int[][] PHASES_APPROACHING_TITANS = {{1, 1, 1, 2, 1, 3, 4}, {2, 2, 2, 1, 3, 3, 4 }, {4, 4, 4, 4, 4, 4, 4}};
     private final static int WALL_BASE_HEALTH = 10000;
     private int numberOfTurns;
     private int resourcesGathered;
@@ -24,8 +24,7 @@ public class Battle {
     private final PriorityQueue<Lane> lanes;
     private final ArrayList<Lane> originalLanes;
 
-    Battle(int numberOfTurns, int score, int titanSpawnDistance, int initialNumOfLanes,
-           int initialResourcesPerLane) throws IOException {
+    public Battle(int numberOfTurns, int score, int titanSpawnDistance, int initialNumOfLanes, int initialResourcesPerLane) throws IOException {
         this.numberOfTurns = numberOfTurns;
         this.resourcesGathered = initialResourcesPerLane * initialNumOfLanes;
         this.battlePhase = BattlePhase.EARLY;
@@ -40,7 +39,7 @@ public class Battle {
     }
 
     private void initializeLanes(int numOfLanes) {
-        for(int i = 0; i < numOfLanes; i++) {
+        for(int i = 0; i < numOfLanes * 2; i++) {
             Lane lane = new Lane(new Wall(WALL_BASE_HEALTH));
             lanes.add(lane);
             originalLanes.add(lane);

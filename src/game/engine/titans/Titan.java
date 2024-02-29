@@ -38,7 +38,7 @@ public abstract class Titan implements Attackee, Attacker, Mobil, Comparable<Tit
 
     @Override
     public void setCurrentHealth(int currentHealth) {
-        this.currentHealth = currentHealth;
+        this.currentHealth = Math.max(0, currentHealth);
     }
 
     public int getDamage() {
