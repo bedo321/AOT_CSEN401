@@ -76,7 +76,8 @@ public class Battle {
     }
 
     public void setNumberOfTitansPerTurn(int numberOfTitansPerTurn) {
-        this.numberOfTitansPerTurn = numberOfTitansPerTurn;
+        if (numberOfTitansPerTurn >= 0)
+            this.numberOfTitansPerTurn = numberOfTitansPerTurn;
     }
 
     public int getScore() {

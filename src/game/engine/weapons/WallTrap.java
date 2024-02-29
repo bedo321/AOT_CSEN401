@@ -1,7 +1,7 @@
 package game.engine.weapons;
 
 public class WallTrap extends Weapon {
-    private final static int WEAPON_CODE = 4;
+    public final static int WEAPON_CODE = 4;
 
     public WallTrap(int baseDamage) {
         super(baseDamage);
