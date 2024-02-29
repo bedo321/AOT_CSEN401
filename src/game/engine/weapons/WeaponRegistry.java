@@ -8,6 +8,7 @@ package game.engine.weapons;
         private int minRange;
         private int maxRange;
 
+
         public WeaponRegistry(int code, int price) {
             this.code = code;
             this.price = price;

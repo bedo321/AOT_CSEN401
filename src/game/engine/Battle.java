@@ -19,7 +19,7 @@ public class Battle {
     private int score;
     private int titanSpawnDistance;
     private final WeaponFactory weaponFactory;
-    private final HashMap<Integer, TitanRegistry> titansArchive;
+    private final HashMap<Integer, TitanRegistry> titansArchives;
     private final ArrayList<Titan> approachingTitans;
     private final PriorityQueue<Lane> lanes;
     private final ArrayList<Lane> originalLanes;
@@ -33,7 +33,7 @@ public class Battle {
         this.score = score;
         this.titanSpawnDistance = titanSpawnDistance;
         this.weaponFactory = new WeaponFactory();
-        this.titansArchive = DataLoader.readTitanRegistry();
+        this.titansArchives = DataLoader.readTitanRegistry();
         this.approachingTitans = new ArrayList<>();
         this.lanes = new PriorityQueue<>();
         this.originalLanes = new ArrayList<>();
@@ -100,8 +100,8 @@ public class Battle {
         return weaponFactory;
     }
 
-    public HashMap<Integer, TitanRegistry> getTitansArchive() {
-        return titansArchive;
+    public HashMap<Integer, TitanRegistry> getTitansArchives() {
+        return titansArchives;
     }
 
     public ArrayList<Titan> getApproachingTitans() {
