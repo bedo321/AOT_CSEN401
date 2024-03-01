@@ -36,10 +36,11 @@ public class Battle {
         this.approachingTitans = new ArrayList<>();
         this.lanes = new PriorityQueue<>();
         this.originalLanes = new ArrayList<>();
+        initializeLanes(initialNumOfLanes);
     }
 
     private void initializeLanes(int numOfLanes) {
-        for(int i = 0; i < numOfLanes * 2; i++) {
+        for (int i = 0; i < numOfLanes; i++) {
             Lane lane = new Lane(new Wall(WALL_BASE_HEALTH));
             lanes.add(lane);
             originalLanes.add(lane);
@@ -75,8 +76,9 @@ public class Battle {
     }
 
     public void setNumberOfTitansPerTurn(int numberOfTitansPerTurn) {
-        if (numberOfTitansPerTurn >= 0)
+        if (numberOfTitansPerTurn >= 0) {
             this.numberOfTitansPerTurn = numberOfTitansPerTurn;
+        }
     }
 
     public int getScore() {

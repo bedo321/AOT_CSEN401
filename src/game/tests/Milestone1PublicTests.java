@@ -1916,7 +1916,7 @@ public class Milestone1PublicTests {
 			fail("Attributes name error");
 
 		}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 			fail("Exception occurred. Please check your console.");
@@ -2508,7 +2508,7 @@ public class Milestone1PublicTests {
 		Constructor<?> battleConstructor = battleClass.getConstructor(int.class,int.class,int.class,int.class,int.class);
 		Object battle = battleConstructor.newInstance(random1,random2,random3,random4,random5);
 
-		Method initializeLanes = battleClass.getDeclaredMethod("initializeLanes",int.class);
+		Method initializeLanes = battleClass.getDeclaredMethod("initializeLanes", int.class);
 		initializeLanes.setAccessible(true);
 		initializeLanes.invoke(battle, random4);
 
