@@ -10,7 +10,7 @@ import java.util.*;
 import java.io.*;
 
 public class Battle {
-    private final static int[][] PHASES_APPROACHING_TITANS = {{1, 1, 1, 2, 1, 3, 4}, {2, 2, 2, 1, 3, 3, 4 }, {4, 4, 4, 4, 4, 4, 4}};
+    private final static int[][] PHASES_APPROACHING_TITANS = {{1, 1, 1, 2, 1, 3, 4}, {2, 2, 2, 1, 3, 3, 4}, {4, 4, 4, 4, 4, 4, 4}};
     private final static int WALL_BASE_HEALTH = 10000;
     private int numberOfTurns;
     private int resourcesGathered;
