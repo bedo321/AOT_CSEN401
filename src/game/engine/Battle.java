@@ -40,7 +40,7 @@ public class Battle {
     }
 
     private void initializeLanes(int numOfLanes) {
-        for(int i = 0; i < numOfLanes; i++) {
+        for (int i = 0; i < numOfLanes; i++) {
             Lane lane = new Lane(new Wall(WALL_BASE_HEALTH));
             lanes.add(lane);
             originalLanes.add(lane);
@@ -76,8 +76,9 @@ public class Battle {
     }
 
     public void setNumberOfTitansPerTurn(int numberOfTitansPerTurn) {
-        if (numberOfTitansPerTurn >= 0)
+        if (numberOfTitansPerTurn >= 0) {
             this.numberOfTitansPerTurn = numberOfTitansPerTurn;
+        }
     }
 
     public int getScore() {
