@@ -19,6 +19,7 @@ public class DataLoader {
             TitanRegistry titan = new TitanRegistry(code,Integer.parseInt(properties[1]),Integer.parseInt(properties[2]),Integer.parseInt(properties[3]),Integer.parseInt(properties[4]),Integer.parseInt(properties[5]),Integer.parseInt(properties[6]));
             titanProperties.put(code,titan);
         }
+        br.close();
         return titanProperties;
     }
 
@@ -29,7 +30,6 @@ public class DataLoader {
         while ((line = br.readLine()) != null) {
             String[] properties = line.split(",");
             int code = Integer.parseInt(properties[0]);
-            System.out.println(code);
             WeaponRegistry weapon;
             if (properties.length == 4)
                 weapon = new WeaponRegistry(code, Integer.parseInt(properties[1]), Integer.parseInt(properties[2]), properties[3]);
@@ -37,10 +37,7 @@ public class DataLoader {
                 weapon = new WeaponRegistry(code, Integer.parseInt(properties[1]), Integer.parseInt(properties[2]), properties[3], Integer.parseInt(properties[4]), Integer.parseInt(properties[5]));
             weaponProperties.put(code,weapon);
         }
+        br.close();
         return weaponProperties;
-    }
-
-    public static void main(String[] args) throws IOException {
-        HashMap<Integer,WeaponRegistry> test = readWeaponRegistry();
     }
 }

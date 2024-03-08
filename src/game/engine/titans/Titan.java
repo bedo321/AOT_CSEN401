@@ -54,7 +54,7 @@ public abstract class Titan implements Attackee, Attacker, Mobil, Comparable<Tit
     }
 
     public void setDistance(int distanceFromBase) {
-        this.distanceFromBase = distanceFromBase;
+        this.distanceFromBase = Math.max(0,distanceFromBase);
     }
 
     @Override
@@ -64,7 +64,7 @@ public abstract class Titan implements Attackee, Attacker, Mobil, Comparable<Tit
 
     @Override
     public void setSpeed(int speed) {
-        this.speed = speed;
+        this.speed = Math.max(0,speed);
     }
 
     @Override
