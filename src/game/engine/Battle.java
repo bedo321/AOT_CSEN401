@@ -25,6 +25,7 @@ public class Battle {
     private final ArrayList<Lane> originalLanes;
 
     public Battle(int numberOfTurns, int score, int titanSpawnDistance, int initialNumOfLanes, int initialResourcesPerLane) throws IOException {
+        super();
         this.numberOfTurns = numberOfTurns;
         this.resourcesGathered = initialResourcesPerLane * initialNumOfLanes;
         this.battlePhase = BattlePhase.EARLY;
@@ -52,7 +53,7 @@ public class Battle {
     }
 
     public void setNumberOfTurns(int numberOfTurns) {
-        this.numberOfTurns = Math.max(0,numberOfTurns);
+        this.numberOfTurns = numberOfTurns;
     }
 
     public int getResourcesGathered() {
@@ -60,7 +61,7 @@ public class Battle {
     }
 
     public void setResourcesGathered(int resourcesGathered) {
-        this.resourcesGathered = Math.max(0,resourcesGathered);
+        this.resourcesGathered = resourcesGathered;
     }
 
     public BattlePhase getBattlePhase() {
@@ -76,7 +77,7 @@ public class Battle {
     }
 
     public void setNumberOfTitansPerTurn(int numberOfTitansPerTurn) {
-        this.numberOfTitansPerTurn = Math.max(0,numberOfTitansPerTurn);
+        this.numberOfTitansPerTurn = numberOfTitansPerTurn;
     }
 
     public int getScore() {
@@ -84,7 +85,7 @@ public class Battle {
     }
 
     public void setScore(int score) {
-        this.score = Math.max(0,score);
+        this.score = score;
     }
 
     public int getTitanSpawnDistance() {
@@ -92,7 +93,7 @@ public class Battle {
     }
 
     public void setTitanSpawnDistance(int titanSpawnDistance) {
-        this.titanSpawnDistance = Math.max(0,titanSpawnDistance);
+        this.titanSpawnDistance = titanSpawnDistance;
     }
 
     public WeaponFactory getWeaponFactory() {

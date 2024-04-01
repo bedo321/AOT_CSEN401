@@ -17,6 +17,7 @@ public abstract class Titan implements Attackee, Attacker, Mobil, Comparable<Tit
 
     public Titan(int baseHealth, int baseDamage, int heightInMeters, int distanceFromBase, int
             speed, int resourcesValue, int dangerLevel) {
+        super();
         this.baseHealth = baseHealth;
         this.currentHealth = baseHealth;
         this.baseDamage = baseDamage;
@@ -64,7 +65,7 @@ public abstract class Titan implements Attackee, Attacker, Mobil, Comparable<Tit
 
     @Override
     public void setSpeed(int speed) {
-        this.speed = Math.max(0,speed);
+        this.speed = speed;
     }
 
     @Override

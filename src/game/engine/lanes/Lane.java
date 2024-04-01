@@ -12,10 +12,11 @@ public class Lane implements Comparable<Lane> {
     private final ArrayList<Weapon> weapons;
 
     public Lane(Wall laneWall) {
-        titans = new PriorityQueue<>();
-        weapons = new ArrayList<>();
+        super();
+        this.titans = new PriorityQueue<>();
+        this.weapons = new ArrayList<>();
         this.laneWall = laneWall;
-        dangerLevel = 0;
+        this.dangerLevel = 0;
     }
 
     public Wall getLaneWall() {
@@ -27,7 +28,7 @@ public class Lane implements Comparable<Lane> {
     }
 
     public void setDangerLevel(int dangerLevel) {
-        this.dangerLevel = Math.max(0,dangerLevel);
+        this.dangerLevel = dangerLevel;
     }
 
     public PriorityQueue<Titan> getTitans() {

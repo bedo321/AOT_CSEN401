@@ -1,4 +1,5 @@
 package game.engine.dataloader;
+import game.engine.exceptions.InvalidCSVFormat;
 import game.engine.titans.TitanRegistry;
 import game.engine.weapons.WeaponRegistry;
 
@@ -15,6 +16,8 @@ public class DataLoader {
         HashMap<Integer, TitanRegistry> titanProperties = new HashMap<>();
         while ((line = br.readLine()) != null) {
             String[] properties = line.split(",");
+            if (properties.length != 7)
+                throw new InvalidCSVFormat(line);
             int code = Integer.parseInt(properties[0]);
             TitanRegistry titan = new TitanRegistry(code,Integer.parseInt(properties[1]),Integer.parseInt(properties[2]),Integer.parseInt(properties[3]),Integer.parseInt(properties[4]),Integer.parseInt(properties[5]),Integer.parseInt(properties[6]));
             titanProperties.put(code,titan);
@@ -30,6 +33,8 @@ public class DataLoader {
         while ((line = br.readLine()) != null) {
             String[] properties = line.split(",");
             int code = Integer.parseInt(properties[0]);
+            if (properties.length != 6 && properties.length != 4)
+                throw new InvalidCSVFormat(line);
             WeaponRegistry weapon;
             if (properties.length == 4)
                 weapon = new WeaponRegistry(code, Integer.parseInt(properties[1]), Integer.parseInt(properties[2]), properties[3]);

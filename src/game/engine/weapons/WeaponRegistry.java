@@ -10,6 +10,7 @@ public class WeaponRegistry {
 
 
     public WeaponRegistry(int code, int price) {
+        super();
         this.code = code;
         this.price = price;
     }
