@@ -55,32 +55,16 @@ public class Battle {
     }
     // I am not sure of the following functions AT ALL
     public void refillApproachingTitans() {
-        if (battlePhase == BattlePhase.EARLY) {
-            approachingTitans.add(titansArchives.get(1).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(1).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(1).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(2).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(1).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(3).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
+        int index;
+        switch (battlePhase) {
+            case (BattlePhase.EARLY) index = 0; break;
+            case (BattlePhase.INTENSE) index = 1; break;
+            case (BattlePhase.GRUMBLING) index = 2; break;
+            default: index = -1;
         }
-        else if (battlePhase == BattlePhase.INTENSE) {
-            approachingTitans.add(titansArchives.get(2).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(2).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(2).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(1).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(3).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(3).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
-        }
-        else {
-            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
-            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
+
+        for (int i : PHASES_APPROACHING_TITANS[index]) {
+            approachingTitans.add(titansArchives.get(i).spawnTitan(titanSpawnDistance);
         }
     }
 
