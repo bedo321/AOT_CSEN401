@@ -1,8 +1,14 @@
 package game.engine;
 
 import game.engine.base.Wall;
+import game.engine.exceptions.InsufficientResourcesException;
+import game.engine.exceptions.InvalidLaneException;
 import game.engine.lanes.Lane;
+import game.engine.titans.PureTitan;
 import game.engine.titans.Titan;
+import game.engine.weapons.WeaponRegistry;
+import game.engine.weapons.Weapon;
+import game.engine.weapons.factory.FactoryResponse;
 import game.engine.weapons.factory.WeaponFactory;
 import game.engine.titans.TitanRegistry;
 import game.engine.dataloader.DataLoader;
@@ -47,7 +53,52 @@ public class Battle {
             originalLanes.add(lane);
         }
     }
+    // I am not sure of the following functions AT ALL
+    public void refillApproachingTitans() {
+        if (battlePhase == BattlePhase.EARLY) {
+            approachingTitans.add(titansArchives.get(1).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(1).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(1).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(2).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(1).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(3).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
+        }
+        else if (battlePhase == BattlePhase.INTENSE) {
+            approachingTitans.add(titansArchives.get(2).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(2).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(2).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(1).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(3).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(3).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
+        }
+        else {
+            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
+            approachingTitans.add(titansArchives.get(4).spawnTitan(titanSpawnDistance));
+        }
+    }
 
+    public void purchaseWeapon(int weaponCode, Lane lane) throws InsufficientResourcesException, InvalidLaneException {
+        if (!lane.isLaneLost()) {
+            FactoryResponse factoryResponse = getWeaponFactory().buyWeapon(getResourcesGathered(), weaponCode);
+            lane.addWeapon(factoryResponse.getWeapon());
+            setResourcesGathered(factoryResponse.getRemainingResources());
+        } else
+            throw new InvalidLaneException();
+    }
+    public void passTurn() {
+
+    }
+    private void addTurnTitansToLane() {
+        Lane lane = lanes.poll();
+
+    }
     public int getNumberOfTurns() {
         return numberOfTurns;
     }

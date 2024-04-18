@@ -1,5 +1,7 @@
 package game.engine.titans;
 
+import game.engine.exceptions.GameActionException;
+
 public class TitanRegistry {
     private final int code;
     private int baseHealth;
@@ -47,5 +49,19 @@ public class TitanRegistry {
 
     public int getDangerLevel() {
         return dangerLevel;
+    }
+
+    public Titan spawnTitan(int distanceFromBase){
+        int titanCode = getCode();
+        Titan titan;
+        if (titanCode == 1)
+            titan = new PureTitan(getBaseHealth(),getBaseDamage(),getHeightInMeters(),distanceFromBase,getSpeed(),getResourcesValue(),getDangerLevel());
+        else if (titanCode == 2)
+            titan = new AbnormalTitan(getBaseHealth(),getBaseDamage(),getHeightInMeters(),distanceFromBase,getSpeed(),getResourcesValue(),getDangerLevel());
+        else if (titanCode == 3)
+            titan = new ArmoredTitan(getBaseHealth(),getBaseDamage(),getHeightInMeters(),distanceFromBase,getSpeed(),getResourcesValue(),getDangerLevel());
+        else
+            titan = new ColossalTitan(getBaseHealth(),getBaseDamage(),getHeightInMeters(),distanceFromBase,getSpeed(),getResourcesValue(),getDangerLevel());
+        return titan;
     }
 }
