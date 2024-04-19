@@ -14,18 +14,16 @@ public class PiercingCannon extends Weapon {
     public int turnAttack(PriorityQueue<Titan> laneTitans) {
         int resourcesGained = 0;
         int length = laneTitans.size();
-        for(int i = 0; i < length; i++) {
+        Stack<Titan> temp = new Stack<>();
+        for(int i = 0; i < length && i < 5; i++) {
             Titan titan = laneTitans.poll();
-            if (i < 5) {
-                int titanResources = attack(titan);
-                resourcesGained += titanResources;
-                if (titanResources != 0)
-                    laneTitans.add(titan);
-            }
-            else
-                laneTitans.add(titan);
+            int titanResources = attack(titan);
+            resourcesGained += titanResources;
+            if (titanResources == 0)
+                temp.push(titan);
         }
+        while(!temp.isEmpty())
+            laneTitans.add(temp.pop());
         return resourcesGained;
     }
-
 }

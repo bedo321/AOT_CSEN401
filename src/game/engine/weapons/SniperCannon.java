@@ -17,7 +17,7 @@ public class SniperCannon extends Weapon {
         if (!laneTitans.isEmpty()) {
             Titan titan = laneTitans.peek();
             resourcesGained = attack(titan);
-            if (resourcesGained == 0)
+            if (resourcesGained != 0)
                 laneTitans.poll();
         }
         return resourcesGained;

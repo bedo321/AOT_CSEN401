@@ -1,6 +1,8 @@
 package game.engine.lanes;
 import java.util.PriorityQueue;
 import java.util.ArrayList;
+import java.util.Stack;
+
 import game.engine.base.Wall;
 import game.engine.titans.Titan;
 import game.engine.weapons.Weapon;
@@ -27,21 +29,27 @@ public class Lane implements Comparable<Lane> {
     }
     public void moveLaneTitans() {
         int length = getTitans().size();
+        Stack<Titan> temp = new Stack<>();
         for (int i = 0; i < length; i++) {
             Titan titan = titans.poll();
-            if (!titan.hasReachedTarget())
-                titan.move();
-            titans.add(titan);
+            titan.move();
+            temp.push(titan);
         }
+        while(!temp.isEmpty())
+            addTitan(temp.pop());
     }
     public int performLaneTitansAttacks() {
         int length = getTitans().size();
+        Stack<Titan> temp = new Stack<>();
         for (int i = 0; i < length; i++) {
             Titan titan = titans.poll();
             if (titan.hasReachedTarget())
                 titan.attack(laneWall);
+            temp.push(titan);
         }
-        if (laneWall.isDefeated())
+        while(!temp.isEmpty())
+            addTitan(temp.pop());
+        if (isLaneLost())
             return -1;
         return 0;
     }
@@ -58,11 +66,14 @@ public class Lane implements Comparable<Lane> {
     public void updateLaneDangerLevel() {
         int newDangerLevel = 0;
         int length = getTitans().size();
+        Stack<Titan> temp = new Stack<>();
         for (int i = 0; i < length; i++) {
             Titan titan = titans.poll();
             newDangerLevel += titan.getDangerLevel();
-            titans.add(titan);
+            temp.push(titan);
         }
+        while(!temp.isEmpty())
+            addTitan(temp.pop());
         setDangerLevel(newDangerLevel);
     }
 

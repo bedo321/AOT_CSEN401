@@ -60,8 +60,10 @@ public class TitanRegistry {
             titan = new AbnormalTitan(getBaseHealth(),getBaseDamage(),getHeightInMeters(),distanceFromBase,getSpeed(),getResourcesValue(),getDangerLevel());
         else if (titanCode == 3)
             titan = new ArmoredTitan(getBaseHealth(),getBaseDamage(),getHeightInMeters(),distanceFromBase,getSpeed(),getResourcesValue(),getDangerLevel());
-        else
+        else if (titanCode == 4)
             titan = new ColossalTitan(getBaseHealth(),getBaseDamage(),getHeightInMeters(),distanceFromBase,getSpeed(),getResourcesValue(),getDangerLevel());
+        else
+            return null;
         return titan;
     }
 }
