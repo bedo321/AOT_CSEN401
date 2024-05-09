@@ -14,7 +14,7 @@ public class WallTrap extends Weapon {
         int resourcesGained = 0;
         if (!laneTitans.isEmpty()) {
             Titan titan = laneTitans.peek();
-            if (titan.getDistance() <= 0) {
+            if (titan.hasReachedTarget()) {
                 resourcesGained = attack(titan);
                 if (resourcesGained != 0)
                     laneTitans.poll();

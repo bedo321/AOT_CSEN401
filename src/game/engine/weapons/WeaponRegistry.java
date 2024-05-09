@@ -58,8 +58,10 @@ public class WeaponRegistry {
             weapon = new SniperCannon(getDamage());
         else if (weaponCode == 3)
             weapon = new VolleySpreadCannon(getDamage(),getMinRange(),getMaxRange());
-        else
+        else if (weaponCode == 4)
             weapon = new WallTrap(getDamage());
+        else
+            weapon = null;
         return weapon;
     }
 }

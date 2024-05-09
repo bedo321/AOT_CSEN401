@@ -96,9 +96,13 @@ public class Battle {
     private int performWeaponsAttacks() {
         int resourcesGathered = 0;
         for (Lane lane : lanes) {
-            int resources = lane.performLaneWeaponsAttacks();
-            resourcesGathered += resources;
+            if (!lane.isLaneLost()) {
+                int resources = lane.performLaneWeaponsAttacks();
+                resourcesGathered += resources;
+            }
         }
+        this.score += resourcesGathered;
+        this.resourcesGathered += resourcesGathered;
         return resourcesGathered;
     }
     private int performTitansAttacks() {
@@ -109,7 +113,7 @@ public class Battle {
             Lane lane = lanes.poll();
             int resources = lane.performLaneTitansAttacks();
             resourcesGathered += resources;
-            if (resources != -1) {
+            if (!lane.isLaneLost()) {
                 temp.push(lane);
             }
         }

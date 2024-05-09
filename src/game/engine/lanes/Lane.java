@@ -39,19 +39,18 @@ public class Lane implements Comparable<Lane> {
             addTitan(temp.pop());
     }
     public int performLaneTitansAttacks() {
+        int resourcesGathered = 0;
         int length = getTitans().size();
         Stack<Titan> temp = new Stack<>();
         for (int i = 0; i < length; i++) {
             Titan titan = titans.poll();
             if (titan.hasReachedTarget())
-                titan.attack(laneWall);
+                resourcesGathered += titan.attack(laneWall);
             temp.push(titan);
         }
         while(!temp.isEmpty())
             addTitan(temp.pop());
-        if (isLaneLost())
-            return -1;
-        return 0;
+        return resourcesGathered;
     }
     public int performLaneWeaponsAttacks() {
         int resourcesGathered = 0;
