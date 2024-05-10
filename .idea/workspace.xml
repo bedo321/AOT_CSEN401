@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e1742f60-f5bf-4563-bc17-c2e162d2ad04" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/Battle$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/Battle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/BattlePhase.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/base/Wall.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/dataloader/DataLoader.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/exceptions/GameActionException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/exceptions/InsufficientResourcesException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/exceptions/InvalidCSVFormat.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/exceptions/InvalidLaneException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/interfaces/Attackee.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/interfaces/Attacker.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/interfaces/Mobil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/lanes/Lane.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/titans/AbnormalTitan.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/titans/ArmoredTitan.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/titans/ColossalTitan.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/titans/PureTitan.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/titans/Titan.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/titans/TitanRegistry.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/weapons/PiercingCannon.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/weapons/SniperCannon.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/weapons/VolleySpreadCannon.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/weapons/WallTrap.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/weapons/Weapon.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/weapons/WeaponRegistry.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/weapons/factory/FactoryResponse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/engine/weapons/factory/WeaponFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/gui/Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/gui/Model.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/gui/View.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/gui/hello-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/tests/Milestone1PrivateTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/tests/Milestone1PublicTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/tests/Milestone2PrivateTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/game/tests/Milestone2PublicTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/AOT_CSEN401/module-info.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/PrimaryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/SecondaryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/primary.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/secondary.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AOT_CSEN401.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AOT_CSEN401.userlibraries" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2gIRqvmSXRA1YMw24DtozpEoBLu" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.Controller">
+    <configuration name="Controller" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="game.gui.Controller" />
+      <module name="AOT_CSEN401" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="game.gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="game.tests in AOT_CSEN401" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AOT_CSEN401" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="game.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="game.tests" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Controller" />
+        <item itemvalue="JUnit.game.tests in AOT_CSEN401" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e1742f60-f5bf-4563-bc17-c2e162d2ad04" name="Changes" comment="" />
+      <created>1715383301550</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715383301550</updated>
+      <workItem from="1715383302842" duration="19000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
