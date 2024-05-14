@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.gui.EasyController">
+   <children>
+      <ImageView fx:id="background" fitHeight="397.0" fitWidth="762.0" layoutX="92.0" layoutY="83.0" pickOnBounds="true">
+         <image>
+            <Image url="@assets/GrassLanes.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="75.0" fitWidth="765.0" layoutX="89.0" layoutY="8.0" pickOnBounds="true">
+         <image>
+            <Image url="@assets/img_2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="wall3" fitHeight="78.0" fitWidth="29.0" layoutX="92.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/Wall.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="wall2" fitHeight="78.0" fitWidth="29.0" layoutX="92.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/Wall.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="wall1" fitHeight="78.0" fitWidth="29.0" layoutX="92.0" layoutY="375.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/Wall.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="48.0" fitWidth="854.0" pickOnBounds="true">
+         <image>
+            <Image url="@assets/Filler.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="432.0" fitWidth="96.0" layoutX="-4.0" layoutY="48.0" pickOnBounds="true">
+         <image>
+            <Image url="@assets/Filler.jpeg" />
+         </image>
+      </ImageView>
+      <GridPane gridLinesVisible="true" layoutX="92.0" layoutY="83.0" prefHeight="397.0" prefWidth="762.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="171.0" minHeight="10.0" prefHeight="136.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="141.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="131.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <GridPane layoutX="92.0" prefHeight="48.0" prefWidth="762.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="141.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="62.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="127.0" minWidth="10.0" prefWidth="111.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="126.0" minWidth="10.0" prefWidth="62.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="10.0" prefWidth="106.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="97.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="112.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="71.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="145.0" text="Resources" textAlignment="CENTER" textFill="#edffa3">
+               <font>
+                  <Font name="Rockwell Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="114.0" text="Score" textAlignment="CENTER" textFill="#edffa3" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Rockwell Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="112.0" text="Phase" textFill="#edffa3" GridPane.columnIndex="4">
+               <font>
+                  <Font name="Rockwell Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="119.0" text="Turn" textFill="#edffa3" GridPane.columnIndex="6">
+               <font>
+                  <Font name="Rockwell Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="resources" alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="92.0" text="Label" textFill="#8af5e5" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Rockwell Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="score" alignment="CENTER" contentDisplay="CENTER" prefHeight="95.0" prefWidth="113.0" text="Label" textAlignment="CENTER" textFill="#8af5e5" GridPane.columnIndex="3">
+               <font>
+                  <Font name="Rockwell Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="phase" alignment="CENTER" contentDisplay="CENTER" prefHeight="95.0" prefWidth="113.0" text="Label" textFill="#8af5e5" GridPane.columnIndex="5">
+               <font>
+                  <Font name="Rockwell Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="turn" alignment="CENTER" contentDisplay="CENTER" prefHeight="95.0" prefWidth="113.0" text="Label" textFill="#8af5e5" GridPane.columnIndex="7">
+               <font>
+                  <Font name="Rockwell Bold" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
