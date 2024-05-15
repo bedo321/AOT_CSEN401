@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -205,5 +206,48 @@
             <Font name="Press Start 2P Regular" size="10.0" />
          </font>
       </Button>
+      <ProgressBar fx:id="bar1" layoutX="24.0" layoutY="178.0" prefHeight="18.0" prefWidth="87.0" progress="1.0" />
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="2.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/heart.png" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="bar2" layoutX="24.0" layoutY="315.0" prefHeight="18.0" prefWidth="87.0" progress="1.0" />
+      <ProgressBar fx:id="bar3" layoutX="24.0" layoutY="432.0" prefHeight="18.0" prefWidth="87.0" progress="1.0" />
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="2.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/heart.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="2.0" layoutY="432.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/heart.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="hp1" layoutX="29.0" layoutY="182.0" text="Label">
+         <font>
+            <Font name="Press Start 2P Regular" size="9.0" />
+         </font>
+      </Label>
+      <Label fx:id="hp2" layoutX="29.0" layoutY="319.0" text="Label">
+         <font>
+            <Font name="Press Start 2P Regular" size="9.0" />
+         </font>
+      </Label>
+      <Label fx:id="hp3" layoutX="29.0" layoutY="437.0" text="Label">
+         <font>
+            <Font name="Press Start 2P Regular" size="9.0" />
+         </font>
+      </Label>
+      <Label fx:id="notEnoughResources" layoutX="176.0" layoutY="59.0" text="You don't have enough resources!" textFill="#ff6464" visible="false">
+         <font>
+            <Font name="Press Start 2P Regular" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="invalidLane" layoutX="176.0" layoutY="59.0" text="You have picked an invalid lane!" textFill="#ff6464" visible="false">
+         <font>
+            <Font name="Press Start 2P Regular" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

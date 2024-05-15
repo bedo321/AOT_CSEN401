@@ -10,11 +10,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
+import org.junit.rules.TestRule;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,6 +35,7 @@ public class EasyController implements Initializable {
     Lane lane2;
     Lane lane3;
     int weaponCode;
+    double wallBaseHealth;
     PriorityQueue<Lane> lanes;
     @FXML
     public Button piercingCannon;
@@ -102,11 +105,36 @@ public class EasyController implements Initializable {
     public Rectangle weaponwindow;
     @FXML
     public Button buyweapon;
+
+    @FXML
+    public ProgressBar bar1;
+
+    @FXML
+    public ProgressBar bar2;
+
+    @FXML
+    public ProgressBar bar3;
+
+    @FXML
+    public Label hp1;
+
+    @FXML
+    public Label hp2;
+
+    @FXML
+    public Label hp3;
+
+    @FXML
+    public Label notEnoughResources;
+
+    @FXML
+    public Label invalidLane;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         playBGMusic("Music_Scene1.mp3");
         try {
-            battle = new Battle(1, 0, 10, 3, 250);
+            battle = new Battle(1, 0, 100, 3, 25);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -118,6 +146,8 @@ public class EasyController implements Initializable {
         lane1 = battle.getOriginalLanes().get(0);
         lane2 = battle.getOriginalLanes().get(1);
         lane3 = battle.getOriginalLanes().get(2);
+        wallBaseHealth = lane1.getLaneWall().getBaseHealth();
+        adjustHealth();
     }
 
     private void playBGMusic(String fileName) {
@@ -133,7 +163,9 @@ public class EasyController implements Initializable {
         battle.passTurn();
         viewTurn();
     }
+
     public void viewTurn() {
+        adjustHealth();
         if (lane1.isLaneLost())
             lane1lost.setVisible(true);
         else {
@@ -177,31 +209,15 @@ public class EasyController implements Initializable {
             playBGMusic("Music_Scene3.mp3");
         }
         phase.setText(String.valueOf(battle.getBattlePhase()));
+        System.out.println(lane1.getTitans().size());
     }
-    @FXML
-    public void wallSpreadCannon(ActionEvent event) {
-        wallTrap.setVisible(false);
-        volleySpreadCannon.setVisible(false);
-        piercingCannon.setVisible(false);
-        sniperCannon.setVisible(false);
-        buy1.setVisible(true);
-        buy2.setVisible(true);
-        buy3.setVisible(true);
-        weaponCode = 3;
-    }
-    @FXML
-    public void longRangeSpear(ActionEvent event) {
-        wallTrap.setVisible(false);
-        volleySpreadCannon.setVisible(false);
-        piercingCannon.setVisible(false);
-        sniperCannon.setVisible(false);
-        buy1.setVisible(true);
-        buy2.setVisible(true);
-        buy3.setVisible(true);
-        weaponCode = 2;
-    }
+
     @FXML
     public void cancel(ActionEvent event) {
+        performCancel();
+    }
+
+    public void performCancel() {
         wallTrap.setVisible(false);
         volleySpreadCannon.setVisible(false);
         piercingCannon.setVisible(false);
@@ -213,9 +229,80 @@ public class EasyController implements Initializable {
         cancel.setVisible(false);
         buyweapon.setDisable(false);
         passturn.setDisable(false);
+        notEnoughResources.setVisible(false);
+        invalidLane.setVisible(false);
+        viewTurn();
+        weaponCode = 0;
     }
+
     @FXML
-    public void buyWeapon(ActionEvent event) {
+    public void buyWeapon(ActionEvent event) throws InvalidLaneException, InsufficientResourcesException {
+        showWeapons();
+    }
+
+    @FXML
+    public void antiTitanShell(ActionEvent event) {
+        weaponCode = 1;
+        hideWeapons();
+    }
+
+    @FXML
+    public void longRangeSpear(ActionEvent event) {
+        weaponCode = 2;
+        hideWeapons();
+    }
+
+    @FXML
+    public void wallSpreadCannon(ActionEvent event) {
+        weaponCode = 3;
+        hideWeapons();
+    }
+
+    @FXML
+    public void ProximityTrap(ActionEvent event) {
+        weaponCode = 4;
+        hideWeapons();
+    }
+
+    @FXML
+    public void buyLane1(ActionEvent event) throws InvalidLaneException, InsufficientResourcesException {
+        if (weaponCode != 0) {
+            completePurchase(weaponCode, lane1);
+        }
+    }
+
+    @FXML
+    public void buyLane2(ActionEvent event) throws InvalidLaneException, InsufficientResourcesException {
+        if (weaponCode != 0) {
+            completePurchase(weaponCode, lane2);
+        }
+    }
+
+    @FXML
+    public void buyLane3(ActionEvent event) throws InvalidLaneException, InsufficientResourcesException {
+        if (weaponCode != 0) {
+            completePurchase(weaponCode, lane3);
+        }
+    }
+
+    public void completePurchase(int code, Lane lane) throws InvalidLaneException, InsufficientResourcesException {
+        try {
+            battle.purchaseWeapon(code, lane);
+            performCancel();
+            weaponCode = 0;
+        } catch (InsufficientResourcesException e) {
+            buy1.setVisible(false);
+            buy2.setVisible(false);
+            buy3.setVisible(false);
+            notEnoughResources.setVisible(true);
+            invalidLane.setVisible(false);
+            showWeapons();
+        } catch (InvalidLaneException e) {
+            invalidLane.setVisible(true);
+        }
+    }
+
+    public void showWeapons() {
         weaponwindow.setVisible(true);
         wallTrap.setVisible(true);
         volleySpreadCannon.setVisible(true);
@@ -225,8 +312,8 @@ public class EasyController implements Initializable {
         buyweapon.setDisable(true);
         passturn.setDisable(true);
     }
-    @FXML
-    public void ProximityTrap(ActionEvent event) {
+
+    public void hideWeapons() {
         wallTrap.setVisible(false);
         volleySpreadCannon.setVisible(false);
         piercingCannon.setVisible(false);
@@ -234,57 +321,16 @@ public class EasyController implements Initializable {
         buy1.setVisible(true);
         buy2.setVisible(true);
         buy3.setVisible(true);
-        weaponCode = 4;
+        notEnoughResources.setVisible(false);
+        invalidLane.setVisible(false);
     }
 
-    @FXML
-    public void antiTitanShell(ActionEvent event) {
-        wallTrap.setVisible(false);
-        volleySpreadCannon.setVisible(false);
-        piercingCannon.setVisible(false);
-        sniperCannon.setVisible(false);
-        buy1.setVisible(true);
-        buy2.setVisible(true);
-        buy3.setVisible(true);
-        weaponCode = 1;
-    }
-
-    @FXML
-    public void buyLane1(ActionEvent event) throws InvalidLaneException, InsufficientResourcesException {
-        battle.purchaseWeapon(weaponCode,lane1);
-        viewTurn();
-        buy1.setVisible(false);
-        buy2.setVisible(false);
-        buy3.setVisible(false);
-        cancel.setVisible(false);
-        weaponwindow.setVisible(false);
-        buyweapon.setDisable(false);
-        passturn.setDisable(false);
-    }
-
-    @FXML
-    public void buyLane2(ActionEvent event) throws InvalidLaneException, InsufficientResourcesException {
-        battle.purchaseWeapon(weaponCode,lane2);
-        viewTurn();
-        buy1.setVisible(false);
-        buy2.setVisible(false);
-        buy3.setVisible(false);
-        cancel.setVisible(false);
-        weaponwindow.setVisible(false);
-        buyweapon.setDisable(false);
-        passturn.setDisable(false);
-    }
-
-    @FXML
-    public void buyLane3(ActionEvent event) throws InvalidLaneException, InsufficientResourcesException {
-        battle.purchaseWeapon(weaponCode,lane3);
-        viewTurn();
-        buy1.setVisible(false);
-        buy2.setVisible(false);
-        buy3.setVisible(false);
-        cancel.setVisible(false);
-        weaponwindow.setVisible(false);
-        buyweapon.setDisable(false);
-        passturn.setDisable(false);
+    public void adjustHealth() {
+        hp1.setText(String.valueOf(lane1.getLaneWall().getCurrentHealth()));
+        hp2.setText(String.valueOf(lane2.getLaneWall().getCurrentHealth()));
+        hp3.setText(String.valueOf(lane3.getLaneWall().getCurrentHealth()));
+        bar1.setProgress((double) Integer.parseInt(hp1.getText()) / wallBaseHealth);
+        bar2.setProgress((double) Integer.parseInt(hp2.getText()) / wallBaseHealth);
+        bar3.setProgress((double) Integer.parseInt(hp3.getText()) / wallBaseHealth);
     }
 }

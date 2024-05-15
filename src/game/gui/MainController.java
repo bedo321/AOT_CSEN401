@@ -109,6 +109,7 @@ public class MainController extends Application implements Initializable {
         instructions.setVisible(true);
         understood.setVisible(true);
     }
+
     public void Transition2(MouseEvent event) {
         mediaPlayer2.stop();
         instructions.setVisible(false);
@@ -133,6 +134,7 @@ public class MainController extends Application implements Initializable {
         start.setVisible(true);
         logo.setVisible(true);
     }
+
     public void switchToEasy(MouseEvent event) throws IOException {
         Stage stage = (Stage)(easy.getScene().getWindow());
         Parent root = FXMLLoader.load(getClass().getResource("Easy.fxml"));
