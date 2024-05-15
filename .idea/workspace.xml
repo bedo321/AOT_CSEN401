@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1742f60-f5bf-4563-bc17-c2e162d2ad04" name="Changes" comment="I firetrucked up and made it work again, I think">
-      <change afterPath="$PROJECT_DIR$/src/game/gui/assets/Font.ttf" afterDir="false" />
+    <list default="true" id="e1742f60-f5bf-4563-bc17-c2e162d2ad04" name="Changes" comment="There is a game now, I think">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/engine/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/engine/Battle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/gui/Easy.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/Easy.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/gui/EasyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/EasyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/gui/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/gui/Title_Screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/Title_Screen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +124,7 @@
       <workItem from="1715383302842" duration="19000" />
       <workItem from="1715772465533" duration="2812000" />
       <workItem from="1715779005765" duration="2449000" />
-      <workItem from="1715781473671" duration="16050000" />
+      <workItem from="1715781473671" duration="18752000" />
     </task>
     <task id="LOCAL-00001" summary="I firetrucked up and made it work again, I think">
       <option name="closed" value="true" />
@@ -140,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715735202968</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="There is a game now, I think">
+      <option name="closed" value="true" />
+      <created>1715799955577</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715799955577</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +150,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="I firetrucked up and made it work again, I think" />
-    <option name="LAST_COMMIT_MESSAGE" value="I firetrucked up and made it work again, I think" />
+    <MESSAGE value="There is a game now, I think" />
+    <option name="LAST_COMMIT_MESSAGE" value="There is a game now, I think" />
   </component>
 </project>
