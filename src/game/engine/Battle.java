@@ -80,6 +80,8 @@ public class Battle {
     }
     private void addTurnTitansToLane() {
         Lane lane = lanes.poll();
+        if (lane == null)
+            return;
         while (numberOfTitansPerTurn > approachingTitans.size()) {
             refillApproachingTitans();
         }
@@ -149,17 +151,14 @@ public class Battle {
     private void performTurn() {
         moveTitans();
         performWeaponsAttacks();
+        updateLanesDangerLevels();
         performTitansAttacks();
         addTurnTitansToLane();
         updateLanesDangerLevels();
         finalizeTurns();
     }
     public boolean isGameOver() {
-        for (Lane lane: lanes) {
-            if (!lane.isLaneLost())
-                return false;
-        }
-        return true;
+        return lanes.isEmpty();
     }
     public int getNumberOfTurns() {
         return numberOfTurns;
