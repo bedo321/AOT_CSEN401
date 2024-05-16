@@ -3,29 +3,30 @@ package game.gui;
 import game.engine.Battle;
 import game.engine.BattlePhase;
 import game.engine.exceptions.InsufficientResourcesException;
-import game.engine.exceptions.InvalidCSVFormat;
 import game.engine.exceptions.InvalidLaneException;
 import game.engine.lanes.Lane;
+import game.engine.titans.Titan;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import org.junit.rules.TestRule;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.PriorityQueue;
-import java.util.ResourceBundle;
-import java.util.Stack;
+import java.util.*;
 
 import static game.gui.MainController.volume;
 
@@ -37,7 +38,10 @@ public class EasyController implements Initializable {
     Lane lane3;
     int weaponCode;
     double wallBaseHealth;
-    ArrayList<Lane> lanes;
+    int currentNumberOfTitans;
+    Lane currentLane;
+    PriorityQueue<Lane> lanes;
+    ArrayList<Lane> originalLanes;
     @FXML
     public Button piercingCannon;
 
@@ -131,6 +135,18 @@ public class EasyController implements Initializable {
     @FXML
     public Label invalidLane;
 
+    @FXML
+    public GridPane laneGrid;
+
+    public Lane[] allLanes;
+    public Label[] allDangerLevels;
+    public Label[] allLostLabels;
+    public Label[] allHP;
+    public ProgressBar[] allHPBars;
+    public Button[] weaponShopButtons;
+    public Button[] weaponShopLaneButtons;
+    public HashMap<Titan, Object[]> titansOnScreen = new HashMap<>();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         playBGMusic("Music_Scene1.mp3");
@@ -143,21 +159,37 @@ public class EasyController implements Initializable {
         score.setText(String.valueOf(battle.getScore()));
         turn.setText(String.valueOf(battle.getNumberOfTurns()));
         phase.setText(String.valueOf(battle.getBattlePhase()));
-        lanes = battle.getOriginalLanes();
-        lane1 = lanes.get(0);
-        lane2 = lanes.get(1);
-        lane3 = lanes.get(2);
+        originalLanes = battle.getOriginalLanes();
+        lanes = battle.getLanes();
+        lane1 = originalLanes.get(0);
+        lane2 = originalLanes.get(1);
+        lane3 = originalLanes.get(2);
         wallBaseHealth = lane1.getLaneWall().getBaseHealth();
-        adjustHealth();
+        weaponShopButtons = new Button[] {piercingCannon, wallTrap, volleySpreadCannon, sniperCannon};
+        setToEasy();
+        for (ProgressBar p : allHPBars) {
+            p.setStyle("-fx-accent: #a3ffac");
+        }
+        viewTurn();
+    }
+
+    public void setToEasy() {
+        allLanes = new Lane[] {lane1, lane2, lane3};
+        allDangerLevels = new Label[] {lane1dangerlevel, lane2dangerlevel, lane3dangerlevel};
+        allLostLabels = new Label[] {lane1lost, lane2lost, lane3lost};
+        allHP = new Label[] {hp1, hp2, hp3};
+        allHPBars = new ProgressBar[] {bar1, bar2, bar3};
+        wallBaseHealth = lane1.getLaneWall().getBaseHealth();
+        weaponShopLaneButtons = new Button[] {buy1, buy2, buy3};
     }
 
     private void playBGMusic(String fileName) {
-                File file = new File("src/game/gui/assets/" + fileName);
-                Media media = new Media(file.toURI().toString());
-                mediaPlayer = new AudioClip(media.getSource());
-                mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-                mediaPlayer.setVolume(volume);
-                mediaPlayer.play();
+        File file = new File("src/game/gui/assets/" + fileName);
+        Media media = new Media(file.toURI().toString());
+        mediaPlayer = new AudioClip(media.getSource());
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.setVolume(volume);
+        mediaPlayer.play();
     }
 
     @FXML
@@ -167,33 +199,23 @@ public class EasyController implements Initializable {
     }
 
     public void viewTurn() {
+        showNewTitans();
+        moveTitansOnScreen();
+        currentLane = lanes.peek();
+        currentNumberOfTitans = battle.getNumberOfTitansPerTurn();
         adjustHealth();
-        if (lane1.isLaneLost())
-            lane1lost.setVisible(true);
-        else {
-            lane1dangerlevel.setText("Danger Level: " + lane1.getDangerLevel());
-            if (lane1.getDangerLevel() >= 15)
-                lane1dangerlevel.setStyle("-fx-text-fill: #edffa3");
-            if (lane1.getDangerLevel() >= 30)
-                lane1dangerlevel.setStyle("-fx-text-fill: #ffa3a3");
-        }
-        if (lane2.isLaneLost())
-            lane2lost.setVisible(true);
-        else {
-            lane2dangerlevel.setText("Danger Level: " + lane2.getDangerLevel());
-            if (lane2.getDangerLevel() >= 15)
-                lane2dangerlevel.setStyle("-fx-text-fill: #edffa3");
-            if (lane2.getDangerLevel() >= 30)
-                lane2dangerlevel.setStyle("-fx-text-fill: #ffa3a3");
-        }
-        if (lane3.isLaneLost())
-            lane3lost.setVisible(true);
-        else {
-            lane3dangerlevel.setText("Danger Level: " + lane3.getDangerLevel());
-            if (lane3.getDangerLevel() >= 15)
-                lane3dangerlevel.setStyle("-fx-text-fill: #edffa3");
-            if (lane3.getDangerLevel() >= 30)
-                lane3dangerlevel.setStyle("-fx-text-fill: #ffa3a3");
+        for (int i = 0; i < allLanes.length; i++) {
+            if (allLanes[i].isLaneLost()) {
+                allLostLabels[i].setVisible(true);
+                continue;
+            }
+            allDangerLevels[i].setText("Danger Level: " + allLanes[i].getDangerLevel());
+            if (allLanes[i].getDangerLevel() >= 15) {
+                allDangerLevels[i].setStyle("-fx-text-fill: #edffa3");
+            }
+            if (allLanes[i].getDangerLevel() >= 30) {
+                allDangerLevels[i].setStyle("-fx-text-fill: #ffa3a3");
+            }
         }
         if (battle.isGameOver()) {
             System.out.println("sure");
@@ -211,7 +233,9 @@ public class EasyController implements Initializable {
             playBGMusic("Music_Scene3.mp3");
         }
         phase.setText(String.valueOf(battle.getBattlePhase()));
-        System.out.println(lane1.getTitans().size());
+        while (currentNumberOfTitans > battle.getApproachingTitans().size()) {
+            battle.refillApproachingTitans();
+        }
     }
 
     @FXML
@@ -220,13 +244,8 @@ public class EasyController implements Initializable {
     }
 
     public void performCancel() {
-        wallTrap.setVisible(false);
-        volleySpreadCannon.setVisible(false);
-        piercingCannon.setVisible(false);
-        sniperCannon.setVisible(false);
-        buy1.setVisible(false);
-        buy2.setVisible(false);
-        buy3.setVisible(false);
+        setWeaponButtonVisibility(false);
+        setLaneButtonVisibility(false);
         weaponwindow.setVisible(false);
         cancel.setVisible(false);
         buyweapon.setDisable(false);
@@ -239,31 +258,39 @@ public class EasyController implements Initializable {
 
     @FXML
     public void buyWeapon(ActionEvent event) throws InvalidLaneException, InsufficientResourcesException {
-        showWeapons();
+        setWeaponButtonVisibility(true);
+        buyweapon.setDisable(true);
+        passturn.setDisable(true);
+        cancel.setVisible(true);
+        weaponwindow.setVisible(true);
     }
 
     @FXML
     public void antiTitanShell(ActionEvent event) {
         weaponCode = 1;
-        hideWeapons();
+        setWeaponButtonVisibility(false);
+        setLaneButtonVisibility(true);
     }
 
     @FXML
     public void longRangeSpear(ActionEvent event) {
         weaponCode = 2;
-        hideWeapons();
+        setWeaponButtonVisibility(false);
+        setLaneButtonVisibility(true);
     }
 
     @FXML
     public void wallSpreadCannon(ActionEvent event) {
         weaponCode = 3;
-        hideWeapons();
+        setWeaponButtonVisibility(false);
+        setLaneButtonVisibility(true);
     }
 
     @FXML
     public void ProximityTrap(ActionEvent event) {
         weaponCode = 4;
-        hideWeapons();
+        setWeaponButtonVisibility(false);
+        setLaneButtonVisibility(true);
     }
 
     @FXML
@@ -293,64 +320,88 @@ public class EasyController implements Initializable {
             performCancel();
             weaponCode = 0;
         } catch (InsufficientResourcesException e) {
-            buy1.setVisible(false);
-            buy2.setVisible(false);
-            buy3.setVisible(false);
+            for (Button b : weaponShopLaneButtons) {
+                b.setVisible(false);
+            }
             notEnoughResources.setVisible(true);
             invalidLane.setVisible(false);
-            showWeapons();
+            setWeaponButtonVisibility(true);
+            setLaneButtonVisibility(false);
         } catch (InvalidLaneException e) {
             invalidLane.setVisible(true);
         }
     }
 
-    public void showWeapons() {
-        weaponwindow.setVisible(true);
-        wallTrap.setVisible(true);
-        volleySpreadCannon.setVisible(true);
-        piercingCannon.setVisible(true);
-        sniperCannon.setVisible(true);
-        cancel.setVisible(true);
-        buyweapon.setDisable(true);
-        passturn.setDisable(true);
+    public void setWeaponButtonVisibility(boolean visibility) {
+        for (Button b : weaponShopButtons) {
+            b.setVisible(visibility);
+        }
     }
 
-    public void hideWeapons() {
-        wallTrap.setVisible(false);
-        volleySpreadCannon.setVisible(false);
-        piercingCannon.setVisible(false);
-        sniperCannon.setVisible(false);
-        buy1.setVisible(true);
-        buy2.setVisible(true);
-        buy3.setVisible(true);
-        notEnoughResources.setVisible(false);
-        invalidLane.setVisible(false);
+    public void setLaneButtonVisibility(boolean visibility) {
+        for (Button b : weaponShopLaneButtons) {
+            b.setVisible(visibility);
+        }
     }
 
     public void adjustHealth() {
-        hp1.setText(String.valueOf(lane1.getLaneWall().getCurrentHealth()));
-        hp2.setText(String.valueOf(lane2.getLaneWall().getCurrentHealth()));
-        hp3.setText(String.valueOf(lane3.getLaneWall().getCurrentHealth()));
-        if (Integer.parseInt(hp1.getText()) >= 7000)
-            bar1.setStyle("-fx-accent: #a3ffac");
-        else if (Integer.parseInt(hp1.getText()) >= 3000)
-            bar1.setStyle("-fx-accent: #edffa3");
-        else
-            bar1.setStyle("-fx-accent: #f66363");
-        if (Integer.parseInt(hp2.getText()) >= 7000)
-            bar2.setStyle("-fx-accent: #a3ffac");
-        else if (Integer.parseInt(hp2.getText()) >= 3000)
-            bar2.setStyle("-fx-accent: #edffa3");
-        else
-            bar2.setStyle("-fx-accent: #f66363");
-        if (Integer.parseInt(hp3.getText()) >= 7000)
-            bar3.setStyle("-fx-accent: #a3ffac");
-        else if (Integer.parseInt(hp3.getText()) >= 3000)
-            bar3.setStyle("-fx-accent: #edffa3");
-        else
-            bar3.setStyle("-fx-accent: #f66363");
-        bar1.setProgress((double) Integer.parseInt(hp1.getText()) / wallBaseHealth);
-        bar2.setProgress((double) Integer.parseInt(hp2.getText()) / wallBaseHealth);
-        bar3.setProgress((double) Integer.parseInt(hp3.getText()) / wallBaseHealth);
+        for (int i = 0; i < allLanes.length; i++) {
+            allHP[i].setText(String.valueOf(allLanes[i].getLaneWall().getCurrentHealth()));
+            allHPBars[i].setProgress((double) Integer.parseInt(allHP[i].getText()) / wallBaseHealth);
+            if (Integer.parseInt(allHP[i].getText()) < 3000) {
+                allHPBars[i].setStyle("-fx-accent: #f66363");
+            } else if (Integer.parseInt(allHP[i].getText()) < 7000) {
+                allHPBars[i].setStyle("-fx-accent: #edffa3");
+            }
+        }
+    }
+
+    public void showNewTitans() {
+        for (int i = 0; i < allLanes.length; i++) {
+            Lane l = allLanes[i];
+            if (l.isLaneLost()) {
+                continue;
+            }
+            for (Titan t : l.getTitans()) {
+                if (titansOnScreen.containsKey(t)) {
+                    continue;
+                }
+                double width = 70;
+                Image titanImage = new Image("Armored.png");
+                ImageView newTitan = new ImageView();
+                newTitan.setFitHeight(width * 1.367);
+                newTitan.setFitWidth(width);
+                newTitan.setImage(titanImage);
+
+                ProgressBar titanHealth = new ProgressBar(1);
+                titanHealth.setStyle("-fx-accent: #f66363");
+                titansOnScreen.put(t, new Object[] {newTitan, titanHealth});
+                laneGrid.add(titanHealth, t.getDistance() / 10, i);
+                laneGrid.add(newTitan, t.getDistance() / 10, i);
+            }
+        }
+    }
+
+    public void moveTitansOnScreen() {
+        Stack<Titan> titansToRemove = new Stack<>();
+        for (Titan t : titansOnScreen.keySet()) {
+            ImageView titanEntity = (ImageView) titansOnScreen.get(t)[0];
+            ProgressBar healthBar = (ProgressBar) titansOnScreen.get(t)[1];
+
+            healthBar.setProgress((double) t.getCurrentHealth() / t.getBaseHealth());
+            if (t.isDefeated()) {
+                titanEntity.setVisible(false);
+                healthBar.setVisible(false);
+                titansToRemove.push(t);
+                continue;
+            }
+
+            GridPane.setValignment(healthBar, VPos.TOP);
+            GridPane.setColumnIndex(healthBar, t.getDistance() / 10);
+            GridPane.setColumnIndex(titanEntity, t.getDistance() / 10);
+        }
+        while (!titansToRemove.isEmpty()) {
+            titansOnScreen.remove(titansToRemove.pop());
+        }
     }
 }

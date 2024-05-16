@@ -78,6 +78,7 @@ public class Battle {
     public void passTurn() {
         performTurn();
     }
+
     private void addTurnTitansToLane() {
         Lane lane = lanes.poll();
         if (lane == null)
