@@ -3,6 +3,7 @@ package game.gui;
 import game.engine.Battle;
 import game.engine.BattlePhase;
 import game.engine.exceptions.InsufficientResourcesException;
+import game.engine.exceptions.InvalidCSVFormat;
 import game.engine.exceptions.InvalidLaneException;
 import game.engine.lanes.Lane;
 import javafx.event.ActionEvent;
@@ -36,7 +37,7 @@ public class EasyController implements Initializable {
     Lane lane3;
     int weaponCode;
     double wallBaseHealth;
-    PriorityQueue<Lane> lanes;
+    ArrayList<Lane> lanes;
     @FXML
     public Button piercingCannon;
 
@@ -134,7 +135,7 @@ public class EasyController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         playBGMusic("Music_Scene1.mp3");
         try {
-            battle = new Battle(1, 0, 100, 3, 25);
+            battle = new Battle(1, 0, 100, 3, 250);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -142,20 +143,21 @@ public class EasyController implements Initializable {
         score.setText(String.valueOf(battle.getScore()));
         turn.setText(String.valueOf(battle.getNumberOfTurns()));
         phase.setText(String.valueOf(battle.getBattlePhase()));
-        lanes = battle.getLanes();
-        lane1 = battle.getOriginalLanes().get(0);
-        lane2 = battle.getOriginalLanes().get(1);
-        lane3 = battle.getOriginalLanes().get(2);
+        lanes = battle.getOriginalLanes();
+        lane1 = lanes.get(0);
+        lane2 = lanes.get(1);
+        lane3 = lanes.get(2);
         wallBaseHealth = lane1.getLaneWall().getBaseHealth();
         adjustHealth();
     }
 
     private void playBGMusic(String fileName) {
-        Media media = new Media(new File("src/game/gui/assets/" + fileName).toURI().toString());
-        mediaPlayer = new AudioClip(media.getSource());
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.setVolume(volume);
-        mediaPlayer.play();
+                File file = new File("src/game/gui/assets/" + fileName);
+                Media media = new Media(file.toURI().toString());
+                mediaPlayer = new AudioClip(media.getSource());
+                mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+                mediaPlayer.setVolume(volume);
+                mediaPlayer.play();
     }
 
     @FXML
@@ -329,6 +331,24 @@ public class EasyController implements Initializable {
         hp1.setText(String.valueOf(lane1.getLaneWall().getCurrentHealth()));
         hp2.setText(String.valueOf(lane2.getLaneWall().getCurrentHealth()));
         hp3.setText(String.valueOf(lane3.getLaneWall().getCurrentHealth()));
+        if (Integer.parseInt(hp1.getText()) >= 7000)
+            bar1.setStyle("-fx-accent: #a3ffac");
+        else if (Integer.parseInt(hp1.getText()) >= 3000)
+            bar1.setStyle("-fx-accent: #edffa3");
+        else
+            bar1.setStyle("-fx-accent: #f66363");
+        if (Integer.parseInt(hp2.getText()) >= 7000)
+            bar2.setStyle("-fx-accent: #a3ffac");
+        else if (Integer.parseInt(hp2.getText()) >= 3000)
+            bar2.setStyle("-fx-accent: #edffa3");
+        else
+            bar2.setStyle("-fx-accent: #f66363");
+        if (Integer.parseInt(hp3.getText()) >= 7000)
+            bar3.setStyle("-fx-accent: #a3ffac");
+        else if (Integer.parseInt(hp3.getText()) >= 3000)
+            bar3.setStyle("-fx-accent: #edffa3");
+        else
+            bar3.setStyle("-fx-accent: #f66363");
         bar1.setProgress((double) Integer.parseInt(hp1.getText()) / wallBaseHealth);
         bar2.setProgress((double) Integer.parseInt(hp2.getText()) / wallBaseHealth);
         bar3.setProgress((double) Integer.parseInt(hp3.getText()) / wallBaseHealth);

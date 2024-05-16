@@ -65,5 +65,16 @@
             <Font name="Press Start 2P Regular" size="23.0" />
          </font>
       </Button>
+      <Rectangle fx:id="error1" arcHeight="5.0" arcWidth="5.0" fill="#bef2a0" height="374.0" layoutX="186.0" layoutY="58.0" opacity="0.85" stroke="BLACK" strokeType="INSIDE" visible="false" width="488.0" />
+      <Label fx:id="error2" alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="58.0" prefHeight="43.0" prefWidth="488.0" text="FAILED TO LOAD GAME ASSETS" textAlignment="CENTER" visible="false">
+         <font>
+            <Font name="Press Start 2P Regular" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="error3" alignment="CENTER" contentDisplay="CENTER" layoutX="192.0" layoutY="106.0" prefHeight="301.0" prefWidth="474.0" text="Make sure that the assets folder is in the right path (inside the gui folder) , path = src/game/gui/assets" textAlignment="CENTER" visible="false" wrapText="true">
+         <font>
+            <Font name="Press Start 2P Regular" size="21.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

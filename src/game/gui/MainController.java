@@ -11,7 +11,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -50,6 +52,12 @@ public class MainController extends Application implements Initializable {
     public Button back;
     @FXML
     public Rectangle rectangle;
+    @FXML
+    public Rectangle error1;
+    @FXML
+    public Label error2;
+    @FXML
+    public Label error3;
     public static double volume = 0.5;
     @Override
     public void start(Stage stage) throws IOException {
@@ -65,16 +73,24 @@ public class MainController extends Application implements Initializable {
     public static void main(String[] args) {
         launch();
     }
-    private void playBGMusic(String fileName) {
-        Media media = new Media(new File("src/game/gui/assets/" + fileName).toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.setVolume(volume);
-        mediaPlayer.play();
+    private void playBGMusic(String fileName){
+        File file = new File("src/game/gui/assets/" + fileName);
+        if (file.exists()) {
+            Media media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+            mediaPlayer.setVolume(volume);
+            mediaPlayer.play();
+        }
+        else {
+            error1.setVisible(true);
+            error2.setVisible(true);
+            error3.setVisible(true);
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        playBGMusic("BGMusic.mp3");
+            playBGMusic("BGMusic.mp3");
     }
     @FXML
     public void OpacityOff(MouseEvent event) {
@@ -97,11 +113,15 @@ public class MainController extends Application implements Initializable {
     }
     @FXML
     public void Transition(MouseEvent event) {
-        if (mediaPlayer.getVolume() > 0.1)
-            mediaPlayer.setVolume(0.1);
-        Media media = new Media(new File("src/game/gui/assets/" + "TTS.mp3").toURI().toString());
-        mediaPlayer2 = new MediaPlayer(media);
-        mediaPlayer2.play();
+        try {
+            if (mediaPlayer.getVolume() > 0.1)
+                mediaPlayer.setVolume(0.1);
+            Media media = new Media(new File("src/game/gui/assets/" + "TTS.mp3").toURI().toString());
+            mediaPlayer2 = new MediaPlayer(media);
+            mediaPlayer2.play();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         settings.setVisible(false);
         start.setVisible(false);
         logo.setVisible(false);
