@@ -164,4 +164,13 @@ public class MainController extends Application implements Initializable {
         stage.setScene(scene);
     }
 
+    public void switchToHard(MouseEvent event) throws IOException {
+        Stage stage = (Stage)(easy.getScene().getWindow());
+        Parent root = FXMLLoader.load(getClass().getResource("Hard.fxml"));
+        Scene scene = new Scene(root);
+        this.mediaPlayer.stop();
+        scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+        stage.setScene(scene);
+    }
+
 }

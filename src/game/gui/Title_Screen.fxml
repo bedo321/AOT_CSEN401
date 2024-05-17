@@ -10,68 +10,68 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane pickOnBounds="false" prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.gui.MainController">
+<AnchorPane pickOnBounds="false" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.gui.MainController">
    <children>
-      <ImageView fx:id="background" fitHeight="489.0" fitWidth="854.0" pickOnBounds="true" AnchorPane.bottomAnchor="-9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fx:id="background" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true">
          <image>
-            <Image url="@assets/Background.jpg" />
+            <Image url="@assets/Background2.jpg" />
          </image>
          <viewport>
             <Rectangle2D />
          </viewport></ImageView>
-      <ImageView fx:id="logo" fitHeight="89.0" fitWidth="376.0" layoutX="239.0" layoutY="66.0" opacity="0.89" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="334.5028533935547" AnchorPane.leftAnchor="239.0" AnchorPane.rightAnchor="239.0" AnchorPane.topAnchor="66.0">
+      <ImageView fx:id="logo" fitHeight="164.0" fitWidth="507.0" layoutX="387.0" layoutY="112.0" opacity="0.89" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="501.0" AnchorPane.leftAnchor="387.0" AnchorPane.rightAnchor="386.0" AnchorPane.topAnchor="112.0">
          <image>
             <Image url="@assets/img_3.png" />
          </image></ImageView>
-      <Button fx:id="settings" alignment="CENTER" contentDisplay="CENTER" layoutX="341.0" layoutY="333.0" mnemonicParsing="false" onMouseClicked="#Transition3" opacity="0.85" prefHeight="73.0" prefWidth="172.0" style="-fx-background-color: #254848; -fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 18px;" text="Settings" textAlignment="CENTER" textFill="#a8a7a7" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="341.0" AnchorPane.rightAnchor="341.0">
+      <Button fx:id="settings" alignment="CENTER" contentDisplay="CENTER" layoutX="514.0" layoutY="491.0" mnemonicParsing="false" onMouseClicked="#Transition3" opacity="0.85" prefHeight="107.0" prefWidth="252.0" style="-fx-background-color: #254848; -fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 18px;" text="Settings" textAlignment="CENTER" textFill="#a8a7a7">
          <font>
             <Font name="Press Start 2P Regular" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="start" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="341.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#Transition" opacity="0.85" prefHeight="73.0" prefWidth="172.0" style="-fx-background-color: #254848; -fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 18px;" text="Start" textAlignment="CENTER" textFill="#a8a7a7" AnchorPane.leftAnchor="341.0" AnchorPane.rightAnchor="341.0" AnchorPane.topAnchor="219.0">
+      <Button fx:id="start" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="514.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#Transition" opacity="0.85" prefHeight="107.0" prefWidth="252.0" style="-fx-background-color: #254848; -fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 18px;" text="Start" textAlignment="CENTER" textFill="#a8a7a7">
          <font>
             <Font name="Press Start 2P Regular" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="understood" layoutX="360.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#Transition2" onMousePressed="#OpacityOn" onMouseReleased="#OpacityOff" opacity="0.85" prefHeight="49.0" prefWidth="140.0" style="-fx-background-color: #254848; -fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 10px;" text="Understood!" textFill="#a8a7a7" visible="false">
+      <Button fx:id="understood" layoutX="524.0" layoutY="501.0" mnemonicParsing="false" onMouseClicked="#Transition2" onMousePressed="#OpacityOn" onMouseReleased="#OpacityOff" opacity="0.85" prefHeight="92.0" prefWidth="233.0" style="-fx-background-color: #254848; -fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 16px;" text="Understood!" textFill="#a8a7a7" visible="false">
          <font>
             <Font name="Press Start 2P Regular" size="11.0" />
          </font>
       </Button>
-      <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#c8d3b5" height="275.0" layoutX="274.0" layoutY="45.0" opacity="0.32" stroke="BLACK" strokeType="INSIDE" visible="false" width="306.0" />
-      <Label fx:id="instructions" alignment="TOP_CENTER" layoutX="274.0" layoutY="52.0" opacity="0.99" prefHeight="293.0" prefWidth="306.0" style="-fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 17px;" text="Welcome to the Attack on Titan Tower Defense Game! Your Objective is to keep the walls safe from the titans by deploying weapons. But beware! You only have limited resources, are you up for the challenge?" textAlignment="CENTER" textFill="#465439" visible="false" wrapText="true">
+      <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#c8d3b5" height="424.0" layoutX="403.0" layoutY="44.0" opacity="0.32" stroke="BLACK" strokeType="INSIDE" visible="false" width="474.0" />
+      <Label fx:id="instructions" alignment="TOP_CENTER" layoutX="403.0" layoutY="53.0" opacity="0.99" prefHeight="406.0" prefWidth="474.0" style="-fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 26px;" text="Welcome to the Attack on Titan Tower Defense Game! Your Objective is to keep the walls safe from the titans by deploying weapons. But beware! You only have limited resources, are you up for the challenge?" textAlignment="CENTER" textFill="#465439" visible="false" wrapText="true">
          <font>
             <Font name="Press Start 2P Regular" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="easy" layoutX="313.0" layoutY="129.0" mnemonicParsing="false" onMouseClicked="#switchToEasy" opacity="0.85" prefHeight="73.0" prefWidth="233.0" style="-fx-background-color: #254848; -fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 20px;" text="Easy Mode" textFill="#bada94" visible="false">
+      <Button fx:id="easy" layoutX="514.0" layoutY="219.0" mnemonicParsing="false" onMouseClicked="#switchToEasy" opacity="0.85" prefHeight="107.0" prefWidth="252.0" style="-fx-background-color: #254848; -fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 22px;" text="Easy Mode" textFill="#bada94" visible="false">
          <font>
             <Font name="Press Start 2P Regular" size="23.0" />
          </font>
       </Button>
-      <Button fx:id="hard" layoutX="310.0" layoutY="256.0" mnemonicParsing="false" opacity="0.85" prefHeight="73.0" prefWidth="233.0" style="-fx-background-color: #254848; -fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 20px;" text="Hard Mode" textFill="#eb5c5c" visible="false">
+      <Button fx:id="hard" layoutX="514.0" layoutY="394.0" mnemonicParsing="false" onMouseClicked="#switchToHard" opacity="0.85" prefHeight="107.0" prefWidth="252.0" style="-fx-background-color: #254848; -fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 22px;" text="Hard Mode" textFill="#eb5c5c" visible="false">
          <font>
             <Font name="Press Start 2P Regular" size="23.0" />
          </font>
       </Button>
-      <Label fx:id="slidertxt" alignment="CENTER" contentDisplay="CENTER" layoutX="333.0" layoutY="265.0" opacity="0.85" prefHeight="43.0" prefWidth="187.0" style="-fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 14px;" text="Volume Slider" textAlignment="CENTER" textFill="#465439" visible="false" wrapText="true">
+      <Label fx:id="slidertxt" alignment="CENTER" contentDisplay="CENTER" layoutX="518.0" layoutY="394.0" opacity="0.85" prefHeight="52.0" prefWidth="245.0" style="-fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 18px;" text="Volume Slider" textAlignment="CENTER" textFill="#465439" visible="false" wrapText="true">
+         <font>
+            <Font name="Press Start 2P Regular" size="18.0" />
+         </font>  
+      </Label>
+      <Slider fx:id="slider" blendMode="ADD" blockIncrement="0.1" layoutX="537.0" layoutY="433.0" max="1.0" onMouseReleased="#changeSound" opacity="0.9" prefHeight="52.0" prefWidth="208.0" value="0.1" visible="false" />
+      <Button fx:id="back" layoutX="514.0" layoutY="491.0" mnemonicParsing="false" onMouseClicked="#Transition4" opacity="0.85" prefHeight="107.0" prefWidth="252.0" style="-fx-background-color: #254848; -fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 18px;" text="Back" textFill="#d37b7b" visible="false">
+         <font>
+            <Font name="Press Start 2P Regular" size="23.0" />
+         </font>
+      </Button>
+      <Rectangle fx:id="error1" arcHeight="5.0" arcWidth="5.0" fill="#bef2a0" height="459.0" layoutX="338.0" layoutY="80.0" opacity="0.85" stroke="BLACK" strokeType="INSIDE" visible="false" width="604.0" />
+      <Label fx:id="error2" alignment="CENTER" contentDisplay="CENTER" layoutX="338.0" layoutY="80.0" prefHeight="107.0" prefWidth="604.0" style="-fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 18px;" text="FAILED TO LOAD GAME ASSETS" textAlignment="CENTER" visible="false">
          <font>
             <Font name="Press Start 2P Regular" size="18.0" />
          </font>
       </Label>
-      <Slider fx:id="slider" blendMode="ADD" blockIncrement="0.1" layoutX="357.0" layoutY="301.0" max="1.0" onMouseReleased="#changeSound" opacity="0.9" value="0.5" visible="false" />
-      <Button fx:id="back" layoutX="341.0" layoutY="334.0" mnemonicParsing="false" onMouseClicked="#Transition4" opacity="0.85" prefHeight="73.0" prefWidth="172.0" style="-fx-background-color: #254848; -fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 18px;" text="Back" textFill="#d37b7b" visible="false">
-         <font>
-            <Font name="Press Start 2P Regular" size="23.0" />
-         </font>
-      </Button>
-      <Rectangle fx:id="error1" arcHeight="5.0" arcWidth="5.0" fill="#bef2a0" height="374.0" layoutX="186.0" layoutY="58.0" opacity="0.85" stroke="BLACK" strokeType="INSIDE" visible="false" width="488.0" />
-      <Label fx:id="error2" alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="58.0" prefHeight="43.0" prefWidth="488.0" text="FAILED TO LOAD GAME ASSETS" textAlignment="CENTER" visible="false">
-         <font>
-            <Font name="Press Start 2P Regular" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="error3" alignment="CENTER" contentDisplay="CENTER" layoutX="192.0" layoutY="106.0" prefHeight="301.0" prefWidth="474.0" text="Make sure that the assets folder is in the right path (inside the gui folder) , path = src/game/gui/assets" textAlignment="CENTER" visible="false" wrapText="true">
+      <Label fx:id="error3" alignment="CENTER" contentDisplay="CENTER" layoutX="338.0" layoutY="176.0" prefHeight="363.0" prefWidth="604.0" style="-fx-font-family: &quot;Press Start 2P&quot;; -fx-font-size: 21px;" text="Make sure that the assets folder is in the right path (inside the gui folder) , path = src/game/gui/assets" textAlignment="CENTER" visible="false" wrapText="true">
          <font>
             <Font name="Press Start 2P Regular" size="21.0" />
          </font>

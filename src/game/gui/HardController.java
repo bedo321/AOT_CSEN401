@@ -25,15 +25,13 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URL;
 import java.util.*;
 
 import static game.gui.MainController.volume;
 
-public class EasyController implements Initializable {
+public class HardController implements Initializable {
     AudioClip mediaPlayer;
     Battle battle;
     Lane lane1;
@@ -165,37 +163,7 @@ public class EasyController implements Initializable {
         try {
             battle = new Battle(1, 0, 100, 3, 250);
         } catch (IOException e) {
-            File file1 = new File("titans.csv");
-            if (!file1.exists()) {
-                try {
-                    file1.createNewFile();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-            try {
-                rewriteTitansCSV();
-            } catch (FileNotFoundException ex) {
-                throw new RuntimeException(ex);
-            }
-            File file2 = new File("weapons.csv");
-            if (!file2.exists()) {
-                try {
-                    file2.createNewFile();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-            }
-            try {
-                rewriteTitansCSV();
-            } catch (FileNotFoundException ex) {
-                throw new RuntimeException(ex);
-            }
-            try {
-                battle = new Battle(1, 0, 100, 3, 250);
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
+            throw new RuntimeException(e);
         }
         resources.setText(String.valueOf(battle.getResourcesGathered()));
         score.setText(String.valueOf(battle.getScore()));
@@ -213,28 +181,6 @@ public class EasyController implements Initializable {
             p.setStyle("-fx-accent: #a3ffac");
         }
         viewTurn();
-    }
-    public void rewriteTitansCSV() throws FileNotFoundException {
-        PrintWriter csvWriter = new PrintWriter("titans.csv");
-        csvWriter.println("1,100,15,15,10,10,1");
-        csvWriter.println("2,100,20,10,15,15,2");
-        csvWriter.println("3,200,85,15,10,30,3");
-        csvWriter.println("4,1000,100,60,5,60,4");
-
-        csvWriter.flush();
-        csvWriter.close();
-
-    }
-    public void rewriteWeaponsCSV() throws FileNotFoundException {
-        PrintWriter csvWriter = new PrintWriter("weapons.csv");
-        csvWriter.println("1,25,10,Anti Titan Shell");
-        csvWriter.println("2,25,35,Long Range Spear");
-        csvWriter.println("3,100,5,Wall Spread Cannon,20,50");
-        csvWriter.println("4,75,100,Proximity Trap");
-
-        csvWriter.flush();
-        csvWriter.close();
-
     }
 
     public void setToEasy() {
