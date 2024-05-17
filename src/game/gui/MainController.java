@@ -58,7 +58,7 @@ public class MainController extends Application implements Initializable {
     public Label error2;
     @FXML
     public Label error3;
-    public static double volume = 0.5;
+    public static double volume = 0.1;
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainController.class.getResource("Title_Screen.fxml"));

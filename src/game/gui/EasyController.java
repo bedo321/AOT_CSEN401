@@ -11,18 +11,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -38,8 +39,6 @@ public class EasyController implements Initializable {
     Lane lane3;
     int weaponCode;
     double wallBaseHealth;
-    int currentNumberOfTitans;
-    Lane currentLane;
     PriorityQueue<Lane> lanes;
     ArrayList<Lane> originalLanes;
     @FXML
@@ -138,6 +137,15 @@ public class EasyController implements Initializable {
     @FXML
     public GridPane laneGrid;
 
+    @FXML
+    public HBox weaponSpace1;
+
+    @FXML
+    public HBox weaponSpace2;
+
+    @FXML
+    public HBox weaponSpace3;
+
     public Lane[] allLanes;
     public Label[] allDangerLevels;
     public Label[] allLostLabels;
@@ -145,7 +153,9 @@ public class EasyController implements Initializable {
     public ProgressBar[] allHPBars;
     public Button[] weaponShopButtons;
     public Button[] weaponShopLaneButtons;
-    public HashMap<Titan, Object[]> titansOnScreen = new HashMap<>();
+    public HBox weaponSpaces[];
+    public HashMap<Titan, Node[]> titansOnScreen = new HashMap<>();
+    public int[][] weaponCounts;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -181,6 +191,8 @@ public class EasyController implements Initializable {
         allHPBars = new ProgressBar[] {bar1, bar2, bar3};
         wallBaseHealth = lane1.getLaneWall().getBaseHealth();
         weaponShopLaneButtons = new Button[] {buy1, buy2, buy3};
+        weaponSpaces = new HBox[] {weaponSpace1, weaponSpace2, weaponSpace3};
+        weaponCounts = new int[3][4];
     }
 
     private void playBGMusic(String fileName) {
@@ -201,8 +213,6 @@ public class EasyController implements Initializable {
     public void viewTurn() {
         showNewTitans();
         moveTitansOnScreen();
-        currentLane = lanes.peek();
-        currentNumberOfTitans = battle.getNumberOfTitansPerTurn();
         adjustHealth();
         for (int i = 0; i < allLanes.length; i++) {
             if (allLanes[i].isLaneLost()) {
@@ -233,9 +243,6 @@ public class EasyController implements Initializable {
             playBGMusic("Music_Scene3.mp3");
         }
         phase.setText(String.valueOf(battle.getBattlePhase()));
-        while (currentNumberOfTitans > battle.getApproachingTitans().size()) {
-            battle.refillApproachingTitans();
-        }
     }
 
     @FXML
@@ -318,6 +325,10 @@ public class EasyController implements Initializable {
         try {
             battle.purchaseWeapon(code, lane);
             performCancel();
+            int laneIndex = getLaneIndex(lane);
+            HBox weaponSpace = weaponSpaces[laneIndex];
+            showNewWeapon(code, laneIndex);
+            weaponCounts[laneIndex][code - 1]++;
             weaponCode = 0;
         } catch (InsufficientResourcesException e) {
             for (Button b : weaponShopLaneButtons) {
@@ -367,7 +378,7 @@ public class EasyController implements Initializable {
                     continue;
                 }
                 double width = 70;
-                Image titanImage = new Image("Armored.png");
+                Image titanImage = new Image(getClass().getResource("/game/gui/assets/Armored.png").toString());
                 ImageView newTitan = new ImageView();
                 newTitan.setFitHeight(width * 1.367);
                 newTitan.setFitWidth(width);
@@ -375,7 +386,7 @@ public class EasyController implements Initializable {
 
                 ProgressBar titanHealth = new ProgressBar(1);
                 titanHealth.setStyle("-fx-accent: #f66363");
-                titansOnScreen.put(t, new Object[] {newTitan, titanHealth});
+                titansOnScreen.put(t, new Node[] {newTitan, titanHealth});
                 laneGrid.add(titanHealth, t.getDistance() / 10, i);
                 laneGrid.add(newTitan, t.getDistance() / 10, i);
             }
@@ -403,5 +414,45 @@ public class EasyController implements Initializable {
         while (!titansToRemove.isEmpty()) {
             titansOnScreen.remove(titansToRemove.pop());
         }
+    }
+
+    public void showNewWeapon(int code, int laneIndex) {
+        if (weaponCounts[laneIndex][code - 1] > 0) {
+            return;
+        }
+        String path = getWeaponPath(code);
+        Image weaponImage = new Image(getClass().getResource(path).toString());
+        ImageView weaponEntity = new ImageView();
+        weaponEntity.setImage(weaponImage);
+        Group weaponContainer = new Group();
+        weaponContainer.getChildren().add(weaponEntity);
+        if (code == 4) {
+            laneGrid.add(weaponContainer, 0, laneIndex);
+            GridPane.setHalignment(weaponEntity, HPos.LEFT);
+            return;
+        }
+        HBox weaponSpace = weaponSpaces[laneIndex];
+        weaponEntity.setFitHeight(70);
+        weaponEntity.setFitWidth(70);
+        weaponSpace.getChildren().add(weaponContainer);
+    }
+
+    public String getWeaponPath(int code) {
+        switch (code) {
+            case 1: return "/game/gui/assets/cannon.png";
+            case 2: return "/game/gui/assets/Long Range Spear 2.png";
+            case 3: return "/game/gui/assets/Wall Spread Cannon.png";
+            case 4: return "/game/gui/assets/Proximity Trap.png";
+            default: return null;
+        }
+    }
+
+    public int getLaneIndex(Lane l) {
+        for (int i = 0; i < allLanes.length; i++) {
+            if (allLanes[i] == l) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
