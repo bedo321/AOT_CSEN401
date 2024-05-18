@@ -91,6 +91,7 @@ public class MainController extends Application implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
             playBGMusic("BGMusic.mp3");
+            slider.setValue(volume);
     }
     @FXML
     public void OpacityOff(MouseEvent event) {

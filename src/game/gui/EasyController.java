@@ -8,17 +8,21 @@ import game.engine.lanes.Lane;
 import game.engine.titans.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -26,6 +30,8 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -159,6 +165,34 @@ public class EasyController implements Initializable {
     @FXML
     public Rectangle laneLostBorder3;
 
+    @FXML
+    public Label defeated1;
+
+    @FXML
+    public Label defeated2;
+
+    @FXML
+    public Button defeated3;
+    @FXML
+    public ImageView weapon1;
+    @FXML
+    public ImageView weapon2;
+    @FXML
+    public ImageView weapon3;
+    @FXML
+    public ImageView weapon4;
+    @FXML
+    public Label weapontxt1;
+    @FXML
+    public Label weapontxt2;
+    @FXML
+    public Label weapontxt3;
+    @FXML
+    public Label weapontxt4;
+    @FXML
+    public Button aiTurn;
+
+
     public Lane[] allLanes;
     public Label[] allDangerLevels;
     public Label[] allLostLabels;
@@ -199,7 +233,7 @@ public class EasyController implements Initializable {
                 }
             }
             try {
-                rewriteTitansCSV();
+                rewriteWeaponsCSV();
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
@@ -297,21 +331,28 @@ public class EasyController implements Initializable {
             }
         }
         if (battle.isGameOver()) {
-            System.out.println("sure");
+            weaponwindow.setVisible(true);
+            defeated1.setVisible(true);
+            defeated2.setText("Your Score: " + score.getText());
+            defeated2.setVisible(true);
+            defeated3.setVisible(true);
             return;
         }
         resources.setText(String.valueOf(battle.getResourcesGathered()));
         score.setText(String.valueOf(battle.getScore()));
         turn.setText(String.valueOf(battle.getNumberOfTurns()));
         if (battle.getBattlePhase().equals(BattlePhase.INTENSE) && phase.getText().equals("EARLY")) {
+            phase.setText(String.valueOf(battle.getBattlePhase()));
+            phase.setStyle("-fx-text-fill: #edffa3");
             mediaPlayer.stop();
             playBGMusic("Music_Scene2.mp3");
         }
         if (battle.getBattlePhase().equals(BattlePhase.GRUMBLING) && phase.getText().equals("INTENSE")) {
+            phase.setText(String.valueOf(battle.getBattlePhase()));
+            phase.setStyle("-fx-text-fill: #ffa3a3");
             mediaPlayer.stop();
             playBGMusic("Music_Scene3.mp3");
         }
-        phase.setText(String.valueOf(battle.getBattlePhase()));
     }
 
     @FXML
@@ -415,6 +456,14 @@ public class EasyController implements Initializable {
     }
 
     public void setWeaponButtonVisibility(boolean visibility) {
+        weapon1.setVisible(visibility);
+        weapon2.setVisible(visibility);
+        weapon3.setVisible(visibility);
+        weapon4.setVisible(visibility);
+        weapontxt1.setVisible(visibility);
+        weapontxt2.setVisible(visibility);
+        weapontxt3.setVisible(visibility);
+        weapontxt4.setVisible(visibility);
         for (Button b : weaponShopButtons) {
             b.setVisible(visibility);
         }
@@ -453,7 +502,7 @@ public class EasyController implements Initializable {
                 continue;
             }
             for (Titan t : l.getTitans()) {
-                if (titansOnScreen.size() > 30) {
+                if (titansOnScreen.size() > 60) {
                     break;
                 }
                 if (titansOnScreen.containsKey(t)) {
@@ -523,7 +572,7 @@ public class EasyController implements Initializable {
 //        Rectangle weaponCountBorder = new Rectangle();
         weaponCountLabel.setText("1");
         weaponCountLabel.setPrefHeight(80);
-        weaponCountLabel.setStyle("-fx-font-family: \"Press Start 2P\"; -fx-font-size: 32px; -fx-text-fill: #f12345;");
+        weaponCountLabel.setStyle("-fx-font-family: \"Press Start 2P\"; -fx-font-size: 32px; -fx-text-fill: #d34760;");
         weaponEntity.setFitHeight(100);
         weaponEntity.setFitWidth(100);
         GridPane weaponSpace = weaponSpaces[laneIndex];
@@ -588,5 +637,13 @@ public class EasyController implements Initializable {
             }
         }
         return -1;
+    }
+    public void switchToTitle(MouseEvent event) throws IOException {
+        Stage stage = (Stage)(defeated3.getScene().getWindow());
+        Parent root = FXMLLoader.load(getClass().getResource("Title_Screen.fxml"));
+        Scene scene = new Scene(root);
+        this.mediaPlayer.stop();
+        scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+        stage.setScene(scene);
     }
 }

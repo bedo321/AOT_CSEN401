@@ -49,7 +49,7 @@
             <Image url="@assets/Filler.jpeg" />
          </image>
       </ImageView>
-      <GridPane fx:id="weaponSpace2" layoutX="114.0" layoutY="260.0" prefHeight="102.0" prefWidth="940.0">
+      <GridPane fx:id="weaponSpace2" layoutX="114.0" layoutY="260.0" prefHeight="102.0" prefWidth="1000.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -59,7 +59,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <GridPane fx:id="weaponSpace3" alignment="CENTER" layoutX="114.0" layoutY="469.0" prefHeight="102.0" prefWidth="940.0">
+      <GridPane fx:id="weaponSpace3" alignment="CENTER" layoutX="114.0" layoutY="469.0" prefHeight="102.0" prefWidth="1000.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -69,7 +69,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <GridPane fx:id="weaponSpace1" layoutX="115.0" layoutY="58.0" prefHeight="102.0" prefWidth="1002.0">
+      <GridPane fx:id="weaponSpace1" layoutX="115.0" layoutY="58.0" prefHeight="102.0" prefWidth="1000.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -165,9 +165,9 @@
             </Label>
          </children>
       </GridPane>
-      <Button fx:id="passturn" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="8.0" mnemonicParsing="false" onAction="#passTurn" opacity="0.95" prefHeight="60.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="Pass Turn" textAlignment="CENTER" textFill="#4d0e0cce" wrapText="true">
+      <Button fx:id="passturn" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="8.0" mnemonicParsing="false" onAction="#passTurn" opacity="0.95" prefHeight="48.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="Pass Turn" textAlignment="CENTER" textFill="#4d0e0cce" wrapText="true">
          <font>
-            <Font name="Press Start 2P Regular" size="18.0" />
+            <Font name="Press Start 2P Regular" size="16.0" />
          </font>
       </Button>
       <Rectangle fx:id="laneLostBorder1" arcHeight="5.0" arcWidth="5.0" height="102.0" layoutX="111.0" layoutY="158.0" opacity="0.4" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="1166.0" />
@@ -203,7 +203,7 @@
             <Font name="Press Start 2P Regular" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="buyweapon" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="79.0" mnemonicParsing="false" onAction="#buyWeapon" opacity="0.95" prefHeight="60.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="Buy Weapon" textAlignment="CENTER" textFill="#4d0e0cce" wrapText="true">
+      <Button fx:id="buyweapon" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="59.0" mnemonicParsing="false" onAction="#buyWeapon" opacity="0.95" prefHeight="48.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="Buy Weapon" textAlignment="CENTER" textFill="#4d0e0ccf" wrapText="true">
          <font>
             <Font name="Press Start 2P Regular" size="14.0" />
          </font>
@@ -299,7 +299,7 @@
       </ImageView>
       <ImageView fx:id="weapon2" fitHeight="150.0" fitWidth="200.0" layoutX="841.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@assets/Long%20Range%20Spear.png" />
+            <Image url="@assets/Long%20Range%20Spear%203.png" />
          </image>
       </ImageView>
       <ImageView fx:id="weapon3" fitHeight="150.0" fitWidth="200.0" layoutX="253.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true" visible="false">
@@ -332,25 +332,25 @@
             <Font name="Press Start 2P Regular" size="15.0" />
          </font>
       </Label>
-      <ImageView fx:id="weapon11" fitHeight="129.0" fitWidth="153.0" layoutX="194.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@assets/cannon.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="weapon21" fitHeight="102.0" fitWidth="132.0" layoutX="1016.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@assets/Long%20Range%20Spear.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="weapon31" fitHeight="102.0" fitWidth="132.0" layoutX="642.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@assets/Wall%20Spread%20Cannon.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="weapon41" fitHeight="144.0" fitWidth="102.0" layoutX="118.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@assets/Proximity%20Trap.png" />
-         </image>
-      </ImageView>
+      <Label fx:id="defeated1" alignment="CENTER" layoutX="367.0" layoutY="96.0" prefHeight="90.0" prefWidth="650.0" text="You have been defeated!" textAlignment="CENTER" textFill="#ff6464" visible="false">
+         <font>
+            <Font name="Press Start 2P Regular" size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="defeated2" alignment="CENTER" contentDisplay="CENTER" layoutX="455.0" layoutY="258.0" prefHeight="67.0" prefWidth="426.0" text="Your Score: 55000" textFill="#edffa3" visible="false">
+         <font>
+            <Font name="Press Start 2P Regular" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="defeated3" alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#switchToTitle" opacity="0.85" prefHeight="96.0" prefWidth="235.0" style="-fx-background-color: #6f9a63;" text="Main Menu" textAlignment="CENTER" visible="false">
+         <font>
+            <Font name="Press Start 2P Regular" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="aiTurn" layoutX="3.0" layoutY="110.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="AI Turn" textFill="#4d0e0c">
+         <font>
+            <Font name="Press Start 2P Regular" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
