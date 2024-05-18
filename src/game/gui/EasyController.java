@@ -5,7 +5,7 @@ import game.engine.BattlePhase;
 import game.engine.exceptions.InsufficientResourcesException;
 import game.engine.exceptions.InvalidLaneException;
 import game.engine.lanes.Lane;
-import game.engine.titans.Titan;
+import game.engine.titans.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -140,13 +140,22 @@ public class EasyController implements Initializable {
     public GridPane laneGrid;
 
     @FXML
-    public HBox weaponSpace1;
+    public GridPane weaponSpace1;
 
     @FXML
-    public HBox weaponSpace2;
+    public GridPane weaponSpace2;
 
     @FXML
-    public HBox weaponSpace3;
+    public GridPane weaponSpace3;
+
+    @FXML
+    public Rectangle laneLostBorder1;
+
+    @FXML
+    public Rectangle laneLostBorder2;
+
+    @FXML
+    public Rectangle laneLostBorder3;
 
     public Lane[] allLanes;
     public Label[] allDangerLevels;
@@ -155,10 +164,11 @@ public class EasyController implements Initializable {
     public ProgressBar[] allHPBars;
     public Button[] weaponShopButtons;
     public Button[] weaponShopLaneButtons;
-    public HBox weaponSpaces[];
+    public GridPane weaponSpaces[];
     public HashMap<Titan, Node[]> titansOnScreen = new HashMap<>();
     public int[][] weaponCounts;
-
+    public Rectangle[] laneLostBorders;
+    public Label[][] weaponCountLabels;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         playBGMusic("Music_Scene1.mp3");
@@ -225,6 +235,7 @@ public class EasyController implements Initializable {
         csvWriter.close();
 
     }
+
     public void rewriteWeaponsCSV() throws FileNotFoundException {
         PrintWriter csvWriter = new PrintWriter("weapons.csv");
         csvWriter.println("1,25,10,Anti Titan Shell");
@@ -234,7 +245,6 @@ public class EasyController implements Initializable {
 
         csvWriter.flush();
         csvWriter.close();
-
     }
 
     public void setToEasy() {
@@ -245,8 +255,10 @@ public class EasyController implements Initializable {
         allHPBars = new ProgressBar[] {bar1, bar2, bar3};
         wallBaseHealth = lane1.getLaneWall().getBaseHealth();
         weaponShopLaneButtons = new Button[] {buy1, buy2, buy3};
-        weaponSpaces = new HBox[] {weaponSpace1, weaponSpace2, weaponSpace3};
+        weaponSpaces = new GridPane[] {weaponSpace1, weaponSpace2, weaponSpace3};
         weaponCounts = new int[3][4];
+        laneLostBorders = new Rectangle[] {laneLostBorder1, laneLostBorder2, laneLostBorder3};
+        weaponCountLabels = new Label[3][4];
     }
 
     private void playBGMusic(String fileName) {
@@ -271,6 +283,7 @@ public class EasyController implements Initializable {
         for (int i = 0; i < allLanes.length; i++) {
             if (allLanes[i].isLaneLost()) {
                 allLostLabels[i].setVisible(true);
+                laneLostBorders[i].setVisible(true);
                 continue;
             }
             allDangerLevels[i].setText("Danger Level: " + allLanes[i].getDangerLevel());
@@ -380,7 +393,6 @@ public class EasyController implements Initializable {
             battle.purchaseWeapon(code, lane);
             performCancel();
             int laneIndex = getLaneIndex(lane);
-            HBox weaponSpace = weaponSpaces[laneIndex];
             showNewWeapon(code, laneIndex);
             weaponCounts[laneIndex][code - 1]++;
             weaponCode = 0;
@@ -425,25 +437,50 @@ public class EasyController implements Initializable {
         for (int i = 0; i < allLanes.length; i++) {
             Lane l = allLanes[i];
             if (l.isLaneLost()) {
+                for (Titan t : l.getTitans()) {
+                    if (!titansOnScreen.containsKey(t)) {
+                        continue;
+                    }
+                    System.out.println("yay");
+                    Node[] titanUI = titansOnScreen.get(t);
+                    titanUI[0].setVisible(false);
+                    titanUI[1].setVisible(false);
+                    titansOnScreen.remove(t);
+                }
                 continue;
             }
             for (Titan t : l.getTitans()) {
+                if (titansOnScreen.size() > 20) {
+                    break;
+                }
                 if (titansOnScreen.containsKey(t)) {
                     continue;
                 }
                 double width = 70;
-                Image titanImage = new Image(getClass().getResource("/game/gui/assets/Armored.png").toString());
+                int code = getTitanCode(t);
+                String titanPath = getTitanPath(code);
+                Image titanImage = new Image(getClass().getResource(titanPath).toString());
                 ImageView newTitan = new ImageView();
+                setTitanSize(code, newTitan);
                 newTitan.setFitHeight(width * 1.367);
                 newTitan.setFitWidth(width);
                 newTitan.setImage(titanImage);
-
                 ProgressBar titanHealth = new ProgressBar(1);
                 titanHealth.setStyle("-fx-accent: #f66363");
                 titansOnScreen.put(t, new Node[] {newTitan, titanHealth});
                 laneGrid.add(titanHealth, t.getDistance() / 10, i);
                 laneGrid.add(newTitan, t.getDistance() / 10, i);
             }
+        }
+    }
+
+    private void setTitanSize(int code, ImageView newTitan) {
+//        newTitan.setFitHeight(20); newTitan.setFitWidth(20); return;
+        switch (code) {
+            case 1: newTitan.setFitHeight(70); newTitan.setFitWidth(70); return;
+            case 2: newTitan.setFitHeight(40); newTitan.setFitWidth(40); return;
+            case 3: newTitan.setFitHeight(60); newTitan.setFitWidth(45); return;
+            case 4: newTitan.setFitHeight(70); newTitan.setFitWidth(70); return;
         }
     }
 
@@ -480,24 +517,56 @@ public class EasyController implements Initializable {
         weaponEntity.setImage(weaponImage);
         Group weaponContainer = new Group();
         weaponContainer.getChildren().add(weaponEntity);
+        weaponCountLabels[laneIndex][code - 1] = new Label();
+        Label weaponCountLabel = weaponCountLabels[laneIndex][code - 1];
+        weaponCountLabel.setText("1");
+        weaponCountLabel.setMaxSize(30, 30);
+        weaponCountLabel.setMinSize(30, 30);
+        weaponEntity.setFitHeight(100);
+        weaponEntity.setFitWidth(100);
         if (code == 4) {
             laneGrid.add(weaponContainer, 0, laneIndex);
             GridPane.setHalignment(weaponEntity, HPos.LEFT);
+//            weaponSpaces[laneIndex].add(weaponCountLabel, 0, laneIndex);
             return;
         }
-        HBox weaponSpace = weaponSpaces[laneIndex];
-        weaponEntity.setFitHeight(70);
-        weaponEntity.setFitWidth(70);
-        weaponSpace.getChildren().add(weaponContainer);
+        GridPane weaponSpace = weaponSpaces[laneIndex];
+        int[] positions = {0, 2, 1};
+        weaponSpace.add(weaponEntity, positions[code - 1], 0);
+        GridPane.setHalignment(weaponEntity, HPos.CENTER);
     }
 
     public String getWeaponPath(int code) {
         switch (code) {
             case 1: return "/game/gui/assets/cannon.png";
-            case 2: return "/game/gui/assets/Long Range Spear 2.png";
+            case 2: return "/game/gui/assets/Long Range Spear 3.png";
             case 3: return "/game/gui/assets/Wall Spread Cannon.png";
-            case 4: return "/game/gui/assets/Proximity Trap.png";
+            case 4: return "/game/gui/assets/Proximity Trap 2.png";
             default: return null;
+        }
+    }
+
+    public String getTitanPath(int code) {
+        switch (code) {
+            case 1: return "/game/gui/assets/Pure.png";
+//            case 2: return "/game/gui/assets/Abnormal.png";
+            case 3: return "/game/gui/assets/Armored.png";
+            case 4: return "/game/gui/assets/Colossal.png";
+            default: return "/game/gui/assets/Armored.png";
+        }
+    }
+
+    public int getTitanCode(Titan t) {
+        if (t instanceof PureTitan) {
+            return 1;
+        } else if (t instanceof AbnormalTitan) {
+            return 2;
+        } else if (t instanceof ArmoredTitan) {
+            return 3;
+        } else if (t instanceof ColossalTitan) {
+            return 4;
+        } else {
+            return 0;
         }
     }
 
