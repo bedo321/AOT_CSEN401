@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -20,6 +21,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -165,7 +167,7 @@ public class EasyController implements Initializable {
     public Button[] weaponShopButtons;
     public Button[] weaponShopLaneButtons;
     public GridPane weaponSpaces[];
-    public HashMap<Titan, Node[]> titansOnScreen = new HashMap<>();
+    public HashMap<Titan, VBox> titansOnScreen = new HashMap<>();
     public int[][] weaponCounts;
     public Rectangle[] laneLostBorders;
     public Label[][] weaponCountLabels;
@@ -395,6 +397,9 @@ public class EasyController implements Initializable {
             int laneIndex = getLaneIndex(lane);
             showNewWeapon(code, laneIndex);
             weaponCounts[laneIndex][code - 1]++;
+            Label weaponLabel = weaponCountLabels[laneIndex][code - 1];
+            int weaponCount = weaponCounts[laneIndex][code - 1];
+            weaponLabel.setText(Integer.toString(weaponCount));
             weaponCode = 0;
         } catch (InsufficientResourcesException e) {
             for (Button b : weaponShopLaneButtons) {
@@ -441,16 +446,14 @@ public class EasyController implements Initializable {
                     if (!titansOnScreen.containsKey(t)) {
                         continue;
                     }
-                    System.out.println("yay");
-                    Node[] titanUI = titansOnScreen.get(t);
-                    titanUI[0].setVisible(false);
-                    titanUI[1].setVisible(false);
+                    VBox titanUI = titansOnScreen.get(t);
+                    laneGrid.getChildren().remove(titanUI);
                     titansOnScreen.remove(t);
                 }
                 continue;
             }
             for (Titan t : l.getTitans()) {
-                if (titansOnScreen.size() > 20) {
+                if (titansOnScreen.size() > 30) {
                     break;
                 }
                 if (titansOnScreen.containsKey(t)) {
@@ -467,9 +470,11 @@ public class EasyController implements Initializable {
                 newTitan.setImage(titanImage);
                 ProgressBar titanHealth = new ProgressBar(1);
                 titanHealth.setStyle("-fx-accent: #f66363");
-                titansOnScreen.put(t, new Node[] {newTitan, titanHealth});
-                laneGrid.add(titanHealth, t.getDistance() / 10, i);
-                laneGrid.add(newTitan, t.getDistance() / 10, i);
+                VBox titanUI = new VBox();
+                titanUI.getChildren().add(titanHealth);
+                titanUI.getChildren().add(newTitan);
+                titansOnScreen.put(t, titanUI);
+                laneGrid.add(titanUI, t.getDistance() / 5, i);
             }
         }
     }
@@ -487,20 +492,18 @@ public class EasyController implements Initializable {
     public void moveTitansOnScreen() {
         Stack<Titan> titansToRemove = new Stack<>();
         for (Titan t : titansOnScreen.keySet()) {
-            ImageView titanEntity = (ImageView) titansOnScreen.get(t)[0];
-            ProgressBar healthBar = (ProgressBar) titansOnScreen.get(t)[1];
-
+            VBox titanUI = titansOnScreen.get(t);
+            ProgressBar healthBar = (ProgressBar) titanUI.getChildren().get(0);
             healthBar.setProgress((double) t.getCurrentHealth() / t.getBaseHealth());
             if (t.isDefeated()) {
-                titanEntity.setVisible(false);
-                healthBar.setVisible(false);
+                laneGrid.getChildren().remove(titansOnScreen.get(t));
                 titansToRemove.push(t);
                 continue;
             }
-
-            GridPane.setValignment(healthBar, VPos.TOP);
-            GridPane.setColumnIndex(healthBar, t.getDistance() / 10);
-            GridPane.setColumnIndex(titanEntity, t.getDistance() / 10);
+            titanUI.setAlignment(Pos.CENTER);
+            GridPane.setValignment(titanUI, VPos.BOTTOM);
+            GridPane.setHalignment(titanUI, HPos.CENTER);
+            GridPane.setColumnIndex(titanUI, t.getDistance() / 5);
         }
         while (!titansToRemove.isEmpty()) {
             titansOnScreen.remove(titansToRemove.pop());
@@ -515,23 +518,31 @@ public class EasyController implements Initializable {
         Image weaponImage = new Image(getClass().getResource(path).toString());
         ImageView weaponEntity = new ImageView();
         weaponEntity.setImage(weaponImage);
-        Group weaponContainer = new Group();
-        weaponContainer.getChildren().add(weaponEntity);
         weaponCountLabels[laneIndex][code - 1] = new Label();
         Label weaponCountLabel = weaponCountLabels[laneIndex][code - 1];
+//        Rectangle weaponCountBorder = new Rectangle();
         weaponCountLabel.setText("1");
-        weaponCountLabel.setMaxSize(30, 30);
-        weaponCountLabel.setMinSize(30, 30);
+        weaponCountLabel.setPrefHeight(80);
+        weaponCountLabel.setStyle("-fx-font-family: \"Press Start 2P\"; -fx-font-size: 32px; -fx-text-fill: #f12345;");
         weaponEntity.setFitHeight(100);
         weaponEntity.setFitWidth(100);
+        GridPane weaponSpace = weaponSpaces[laneIndex];
+
         if (code == 4) {
-            laneGrid.add(weaponContainer, 0, laneIndex);
+            laneGrid.add(weaponEntity, 0, laneIndex);
             GridPane.setHalignment(weaponEntity, HPos.LEFT);
 //            weaponSpaces[laneIndex].add(weaponCountLabel, 0, laneIndex);
             return;
         }
-        GridPane weaponSpace = weaponSpaces[laneIndex];
+//        weaponCountBorder.setHeight(70);
+//        weaponCountBorder.setWidth(70);
+//        weaponCountBorder.setOpacity(0.7);
         int[] positions = {0, 2, 1};
+//        weaponSpace.add(weaponCountBorder, positions[code - 1], 0);
+//        GridPane.setHalignment(weaponCountBorder, HPos.RIGHT);
+        weaponSpace.add(weaponCountLabel, positions[code - 1], 0);
+        GridPane.setHalignment(weaponCountLabel, HPos.RIGHT);
+        GridPane.setValignment(weaponCountLabel, VPos.CENTER);
         weaponSpace.add(weaponEntity, positions[code - 1], 0);
         GridPane.setHalignment(weaponEntity, HPos.CENTER);
     }

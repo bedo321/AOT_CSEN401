@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1742f60-f5bf-4563-bc17-c2e162d2ad04" name="Changes" comment="Added assets.">
+    <list default="true" id="e1742f60-f5bf-4563-bc17-c2e162d2ad04" name="Changes" comment="help.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/gui/Easy.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/Easy.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/gui/EasyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/EasyController.java" afterDir="false" />
@@ -142,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715965540287</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="help.">
+      <created>1716052269282</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716052269282</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +171,7 @@
     <MESSAGE value="I firetrucked up and made it work again, I think" />
     <MESSAGE value="Added titans with their health bars. Also changed the structure of the program by grouping similar elements into arrays." />
     <MESSAGE value="Added new assets, and made the weapons visible during gameplay." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new assets, and made the weapons visible during gameplay." />
+    <MESSAGE value="help." />
+    <option name="LAST_COMMIT_MESSAGE" value="help." />
   </component>
 </project>
