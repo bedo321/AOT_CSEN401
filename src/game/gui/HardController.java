@@ -228,7 +228,7 @@ public class HardController implements Initializable {
     @FXML
     public Button aiTurn;
     public Image weaponImg1 = new Image(getClass().getResource("/game/gui/assets/Pure.png").toString());
-    public Image weaponImg2 = new Image(getClass().getResource("/game/gui/assets/Armored.png").toString());
+    public Image weaponImg2 = new Image(getClass().getResource("/game/gui/assets/Abnormal.png").toString());
     public Image weaponImg3 = new Image(getClass().getResource("/game/gui/assets/Armored.png").toString());
     public Image weaponImg4 = new Image(getClass().getResource("/game/gui/assets/Colossal.png").toString());
 
@@ -593,10 +593,10 @@ public class HardController implements Initializable {
     private void setTitanSize(int code, ImageView newTitan) {
 //        newTitan.setFitHeight(20); newTitan.setFitWidth(20); return;
         switch (code) {
-            case 1: newTitan.setFitHeight(30); newTitan.setFitWidth(50); return;
-            case 2: newTitan.setFitHeight(40); newTitan.setFitWidth(50); return;
-            case 3: newTitan.setFitHeight(50); newTitan.setFitWidth(50); return;
-            case 4: newTitan.setFitHeight(60); newTitan.setFitWidth(50);
+            case 1: newTitan.setFitHeight(35); newTitan.setFitWidth(35); return;
+            case 2: newTitan.setFitHeight(45); newTitan.setFitWidth(35); return;
+            case 3: newTitan.setFitHeight(55); newTitan.setFitWidth(60); return;
+            case 4: newTitan.setFitHeight(70); newTitan.setFitWidth(70);
         }
     }
 

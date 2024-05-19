@@ -103,9 +103,10 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="205.0" minHeight="10.0" prefHeight="205.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="205.0" minHeight="10.0" prefHeight="152.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="285.0" minHeight="10.0" prefHeight="204.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="197.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="235.0" minHeight="10.0" prefHeight="206.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
       <GridPane layoutX="110.0" layoutY="8.0" prefHeight="48.0" prefWidth="1166.0">
@@ -165,11 +166,6 @@
             </Label>
          </children>
       </GridPane>
-      <Button fx:id="passturn" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="8.0" mnemonicParsing="false" onAction="#passTurn" opacity="0.95" prefHeight="48.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="Pass Turn" textAlignment="CENTER" textFill="#4d0e0cce" wrapText="true">
-         <font>
-            <Font name="Press Start 2P Regular" size="16.0" />
-         </font>
-      </Button>
       <Rectangle fx:id="laneLostBorder1" arcHeight="5.0" arcWidth="5.0" height="102.0" layoutX="111.0" layoutY="158.0" opacity="0.4" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="1166.0" />
       <Rectangle fx:id="laneLostBorder2" arcHeight="5.0" arcWidth="5.0" height="102.0" layoutX="114.0" layoutY="364.0" opacity="0.6" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="1166.0" />
       <Rectangle fx:id="laneLostBorder3" arcHeight="5.0" arcWidth="5.0" height="96.0" layoutX="111.0" layoutY="576.0" opacity="0.6" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="1172.0" />
@@ -203,18 +199,13 @@
             <Font name="Press Start 2P Regular" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="buyweapon" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="59.0" mnemonicParsing="false" onAction="#buyWeapon" opacity="0.95" prefHeight="48.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="Buy Weapon" textAlignment="CENTER" textFill="#4d0e0ccf" wrapText="true">
-         <font>
-            <Font name="Press Start 2P Regular" size="14.0" />
-         </font>
-      </Button>
       <Rectangle fx:id="weaponwindow" arcHeight="5.0" arcWidth="5.0" fill="#3c5361" height="673.0" layoutX="114.0" layoutY="48.0" opacity="0.85" stroke="BLACK" strokeType="INSIDE" visible="false" width="1166.0" />
-      <Button fx:id="piercingCannon" layoutX="288.0" layoutY="249.0" mnemonicParsing="false" onAction="#antiTitanShell" prefHeight="102.0" prefWidth="251.0" style="-fx-background-color: #6f9a63;" text="Anti-Titan Shell" textAlignment="CENTER" visible="false" wrapText="true">
+      <Button fx:id="piercingCannon" layoutX="288.0" layoutY="254.0" mnemonicParsing="false" onAction="#antiTitanShell" prefHeight="102.0" prefWidth="251.0" style="-fx-background-color: #6f9a63;" text="Anti-Titan Shell" textAlignment="CENTER" visible="false" wrapText="true">
          <font>
             <Font name="Press Start 2P Regular" size="22.0" />
          </font>
       </Button>
-      <Button fx:id="sniperCannon" layoutX="841.0" layoutY="249.0" mnemonicParsing="false" onAction="#longRangeSpear" prefHeight="102.0" prefWidth="251.0" style="-fx-background-color: #6f9a63;" text="Long Range Spear" textAlignment="CENTER" visible="false" wrapText="true">
+      <Button fx:id="sniperCannon" layoutX="841.0" layoutY="254.0" mnemonicParsing="false" onAction="#longRangeSpear" prefHeight="102.0" prefWidth="251.0" style="-fx-background-color: #6f9a63;" text="Long Range Spear" textAlignment="CENTER" visible="false" wrapText="true">
          <font>
             <Font name="Press Start 2P Regular" size="22.0" />
          </font>
@@ -292,12 +283,12 @@
             <Font name="Press Start 2P Regular" size="18.0" />
          </font>
       </Button>
-      <ImageView fx:id="weapon1" fitHeight="150.0" fitWidth="200.0" layoutX="260.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="weapon1" fitHeight="150.0" fitWidth="200.0" layoutX="260.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@assets/cannon.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="weapon2" fitHeight="150.0" fitWidth="200.0" layoutX="841.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="weapon2" fitHeight="150.0" fitWidth="200.0" layoutX="841.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@assets/Long%20Range%20Spear%203.png" />
          </image>
@@ -312,12 +303,12 @@
             <Image url="@assets/Proximity%20Trap.png" />
          </image>
       </ImageView>
-      <Label fx:id="weapontxt1" layoutX="414.0" layoutY="96.0" lineSpacing="7.0" prefHeight="123.0" prefWidth="197.0" text="Type:Piercing Cannon Price:25 Damage:10" textFill="#edffa3" visible="false" wrapText="true">
+      <Label fx:id="weapontxt1" layoutX="414.0" layoutY="124.0" lineSpacing="7.0" prefHeight="123.0" prefWidth="197.0" text="Type:Piercing Cannon Price:25 Damage:10" textFill="#edffa3" visible="false" wrapText="true">
          <font>
             <Font name="Press Start 2P Regular" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="weapontxt2" layoutX="991.0" layoutY="88.0" lineSpacing="7.0" prefHeight="144.0" prefWidth="166.0" text="Type:Sniper Cannon Price:25 Damage:35" textFill="#edffa3" visible="false" wrapText="true">
+      <Label fx:id="weapontxt2" layoutX="991.0" layoutY="116.0" lineSpacing="7.0" prefHeight="144.0" prefWidth="166.0" text="Type:Sniper Cannon Price:25 Damage:35" textFill="#edffa3" visible="false" wrapText="true">
          <font>
             <Font name="Press Start 2P Regular" size="15.0" />
          </font>
@@ -347,9 +338,24 @@
             <Font name="Press Start 2P Regular" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="aiTurn" layoutX="3.0" layoutY="110.0" mnemonicParsing="false" onAction="#aiTurnAction" prefHeight="48.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="AI Turn" textFill="#4d0e0c">
+      <Button fx:id="passturn" alignment="CENTER" contentDisplay="CENTER" layoutX="304.0" layoutY="292.0" mnemonicParsing="false" onAction="#passTurn" opacity="0.95" prefHeight="102.0" prefWidth="221.0" style="-fx-background-color: #6f9a63;" text="Pass Turn" textAlignment="CENTER" textFill="#282828cf" visible="false" wrapText="true">
          <font>
-            <Font name="Press Start 2P Regular" size="12.0" />
+            <Font name="Press Start 2P Regular" size="28.0" />
+         </font>
+      </Button>
+      <Button fx:id="buyweapon" alignment="CENTER" contentDisplay="CENTER" layoutX="585.0" layoutY="292.0" mnemonicParsing="false" onAction="#buyWeapon" opacity="0.95" prefHeight="102.0" prefWidth="221.0" style="-fx-background-color: #6f9a63;" text="Buy Weapon" textAlignment="CENTER" textFill="#262626cf" visible="false" wrapText="true">
+         <font>
+            <Font name="Press Start 2P Regular" size="26.0" />
+         </font>
+      </Button>
+      <Button fx:id="aiTurn" alignment="CENTER" contentDisplay="CENTER" layoutX="859.0" layoutY="293.0" mnemonicParsing="false" onAction="#aiTurnAction" opacity="0.95" prefHeight="102.0" prefWidth="221.0" style="-fx-background-color: #6f9a63;" text="AI Turn" textAlignment="CENTER" textFill="#262626cf" visible="false" wrapText="true">
+         <font>
+            <Font name="Press Start 2P Regular" size="26.0" />
+         </font>
+      </Button>
+      <Button fx:id="action" layoutX="3.0" layoutY="13.0" mnemonicParsing="false" onKeyPressed="#aiTurnActionKey" onMouseClicked="#actionEvent" opacity="0.9" prefHeight="90.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="Action" textFill="#36230b">
+         <font>
+            <Font name="Press Start 2P Regular" size="14.0" />
          </font>
       </Button>
    </children>

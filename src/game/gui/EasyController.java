@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -182,8 +183,10 @@ public class EasyController implements Initializable {
     public Label weapontxt4;
     @FXML
     public Button aiTurn;
+    @FXML
+    public Button action;
     public Image weaponImg1 = new Image(getClass().getResource("/game/gui/assets/Pure.png").toString());
-    public Image weaponImg2 = new Image(getClass().getResource("/game/gui/assets/Armored.png").toString());
+    public Image weaponImg2 = new Image(getClass().getResource("/game/gui/assets/Abnormal.png").toString());
     public Image weaponImg3 = new Image(getClass().getResource("/game/gui/assets/Armored.png").toString());
     public Image weaponImg4 = new Image(getClass().getResource("/game/gui/assets/Colossal.png").toString());
 
@@ -306,6 +309,7 @@ public class EasyController implements Initializable {
     @FXML
     public void passTurn(ActionEvent event) {
         battle.passTurn();
+        performCancel();
         viewTurn();
     }
 
@@ -356,16 +360,27 @@ public class EasyController implements Initializable {
     public void cancel(ActionEvent event) {
         performCancel();
     }
+    @FXML
+    public void actionEvent(MouseEvent event) {
+        weaponwindow.setVisible(true);
+        buyweapon.setVisible(true);
+        passturn.setVisible(true);
+        aiTurn.setVisible(true);
+        action.setDisable(true);
+        cancel.setVisible(true);
+    }
 
     public void performCancel() {
         setWeaponButtonVisibility(false);
         setLaneButtonVisibility(false);
         weaponwindow.setVisible(false);
         cancel.setVisible(false);
-        buyweapon.setDisable(false);
-        passturn.setDisable(false);
+        buyweapon.setVisible(false);
+        passturn.setVisible(false);
         notEnoughResources.setVisible(false);
         invalidLane.setVisible(false);
+        aiTurn.setVisible(false);
+        action.setDisable(false);
         viewTurn();
         weaponCode = 0;
     }
@@ -373,11 +388,11 @@ public class EasyController implements Initializable {
     @FXML
     public void buyWeapon(ActionEvent event) {
         setWeaponButtonVisibility(true);
-        buyweapon.setDisable(true);
-        passturn.setDisable(true);
-        cancel.setVisible(true);
-        weaponwindow.setVisible(true);
+        buyweapon.setVisible(false);
+        passturn.setVisible(false);
+        aiTurn.setVisible(false);
     }
+
 
     @FXML
     public void antiTitanShell(ActionEvent event) {
@@ -502,15 +517,13 @@ public class EasyController implements Initializable {
                 if (titansOnScreen.containsKey(t)) {
                     continue;
                 }
-                double width = 70;
                 int code = getTitanCode(t);
                 Image titanImage = getTitanPath(code);
                 ImageView newTitan = new ImageView();
                 setTitanSize(code, newTitan);
-                newTitan.setFitHeight(width * 1.367);
-                newTitan.setFitWidth(width);
                 newTitan.setImage(titanImage);
                 ProgressBar titanHealth = new ProgressBar(1);
+                titanHealth.setMaxHeight(10);
                 titanHealth.setStyle("-fx-accent: #f66363");
                 VBox titanUI = new VBox();
                 titanUI.getChildren().add(titanHealth);
@@ -524,10 +537,10 @@ public class EasyController implements Initializable {
     private void setTitanSize(int code, ImageView newTitan) {
 //        newTitan.setFitHeight(20); newTitan.setFitWidth(20); return;
         switch (code) {
-            case 1: newTitan.setFitHeight(70); newTitan.setFitWidth(70); return;
-            case 2: newTitan.setFitHeight(40); newTitan.setFitWidth(40); return;
-            case 3: newTitan.setFitHeight(60); newTitan.setFitWidth(45); return;
-            case 4: newTitan.setFitHeight(70); newTitan.setFitWidth(70); return;
+            case 1: newTitan.setFitHeight(60); newTitan.setFitWidth(50); return;
+            case 2: newTitan.setFitHeight(70); newTitan.setFitWidth(60); return;
+            case 3: newTitan.setFitHeight(90); newTitan.setFitWidth(70); return;
+            case 4: newTitan.setFitHeight(110); newTitan.setFitWidth(100); return;
         }
     }
 
@@ -542,7 +555,7 @@ public class EasyController implements Initializable {
                 titansToRemove.push(t);
                 continue;
             }
-            titanUI.setAlignment(Pos.CENTER);
+            titanUI.setAlignment(Pos.BOTTOM_CENTER);
             GridPane.setValignment(titanUI, VPos.BOTTOM);
             GridPane.setHalignment(titanUI, HPos.CENTER);
             GridPane.setColumnIndex(titanUI, t.getDistance() / 5);
@@ -573,6 +586,7 @@ public class EasyController implements Initializable {
         if (code == 4) {
             laneGrid.add(weaponEntity, 0, laneIndex);
             GridPane.setHalignment(weaponEntity, HPos.LEFT);
+            GridPane.setValignment(weaponEntity, VPos.BOTTOM);
 //            weaponSpaces[laneIndex].add(weaponCountLabel, 0, laneIndex);
             return;
         }
@@ -605,8 +619,8 @@ public class EasyController implements Initializable {
             case 2: return weaponImg2;
             case 3: return weaponImg3;
             case 4: return weaponImg4;
-            default: return weaponImg2;
         }
+        return null;
     }
 
     public int getTitanCode(Titan t) {
@@ -642,6 +656,60 @@ public class EasyController implements Initializable {
     }
     @FXML
     public void aiTurnAction (ActionEvent event) {
+        int danger = 0;
+        int laneNum = 0;
+        for (int i = 0; i < allLanes.length; i++) {
+            if (!allLanes[i].isLaneLost()) {
+                if (allLanes[i].getDangerLevel() >= danger) {
+                    danger = allLanes[i].getDangerLevel();
+                    laneNum = i;
+                }
+            }
+        }
+        Label cannon = weaponCountLabels[laneNum][0];
+        Label spear = weaponCountLabels[laneNum][1];
+        Label wallTrap = weaponCountLabels[laneNum][3];
+        if (phase.getText().equals("EARLY")) {
+            if (spear == null || Integer.parseInt(spear.getText()) < 5) {
+                if (Integer.parseInt(resources.getText()) >= 25)
+                    completePurchase(2,allLanes[laneNum]);
+                else
+                    battle.passTurn();
+            }
+            else {
+                if (Integer.parseInt(resources.getText()) >= 25)
+                    completePurchase(1, allLanes[laneNum]);
+                else
+                    battle.passTurn();
+            }
+        }
+        else if (cannon == null || phase.getText().equals("INTENSE") || Integer.parseInt(turn.getText()) < 40) {
+            if (Integer.parseInt(resources.getText()) >= 25)
+                completePurchase(1,allLanes[laneNum]);
+            else
+                battle.passTurn();
+        }
+        else {
+            if (wallTrap == null || Integer.parseInt(wallTrap.getText()) < 20) {
+                if (Integer.parseInt(resources.getText()) >= 75)
+                    completePurchase(4,allLanes[laneNum]);
+                else if (Integer.parseInt(resources.getText()) >= 25)
+                    completePurchase(1,allLanes[laneNum]);
+                else
+                    battle.passTurn();
+            }
+            else {
+                if (Integer.parseInt(resources.getText()) >= 25)
+                    completePurchase(1, allLanes[laneNum]);
+                else
+                    battle.passTurn();
+            }
+        }
+        performCancel();
+        viewTurn();
+    }
+    @FXML
+    public void aiTurnActionKey (KeyEvent event) {
         int danger = 0;
         int laneNum = 0;
         for (int i = 0; i < allLanes.length; i++) {
