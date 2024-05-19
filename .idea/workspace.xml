@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1742f60-f5bf-4563-bc17-c2e162d2ad04" name="Changes" comment="help.">
+    <list default="true" id="e1742f60-f5bf-4563-bc17-c2e162d2ad04" name="Changes" comment="Basically Finished the Easy Mode fr fr fr">
+      <change afterPath="$PROJECT_DIR$/src/game/gui/alak.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/gui/Easy.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/Easy.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/gui/EasyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/EasyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gui/Hard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/Hard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gui/HardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/HardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/gui/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weapons.csv" beforeDir="false" afterPath="$PROJECT_DIR$/weapons.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -48,9 +51,16 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -124,6 +134,7 @@
       <workItem from="1715779005765" duration="2449000" />
       <workItem from="1715781473671" duration="16050000" />
       <workItem from="1715862910104" duration="10588000" />
+      <workItem from="1716118826508" duration="15528000" />
     </task>
     <task id="LOCAL-00001" summary="I firetrucked up and made it work again, I think">
       <option name="closed" value="true" />
@@ -154,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716052269282</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Basically Finished the Easy Mode fr fr fr">
+      <option name="closed" value="true" />
+      <created>1716070123513</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716070123513</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +195,7 @@
     <MESSAGE value="Added titans with their health bars. Also changed the structure of the program by grouping similar elements into arrays." />
     <MESSAGE value="Added new assets, and made the weapons visible during gameplay." />
     <MESSAGE value="help." />
-    <option name="LAST_COMMIT_MESSAGE" value="help." />
+    <MESSAGE value="Basically Finished the Easy Mode fr fr fr" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basically Finished the Easy Mode fr fr fr" />
   </component>
 </project>

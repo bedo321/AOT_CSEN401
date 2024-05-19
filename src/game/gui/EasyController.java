@@ -88,15 +88,6 @@ public class EasyController implements Initializable {
     public ImageView background;
 
     @FXML
-    public ImageView wall1;
-
-    @FXML
-    public ImageView wall2;
-
-    @FXML
-    public ImageView wall3;
-
-    @FXML
     public Button passturn;
     @FXML
     public Label lane1lost;
@@ -191,6 +182,12 @@ public class EasyController implements Initializable {
     public Label weapontxt4;
     @FXML
     public Button aiTurn;
+    public Image weaponImg1 = new Image(getClass().getResource("/game/gui/assets/Pure.png").toString());
+    public Image weaponImg2 = new Image(getClass().getResource("/game/gui/assets/Armored.png").toString());
+    public Image weaponImg3 = new Image(getClass().getResource("/game/gui/assets/Armored.png").toString());
+    public Image weaponImg4 = new Image(getClass().getResource("/game/gui/assets/Colossal.png").toString());
+
+
 
 
     public Lane[] allLanes;
@@ -502,16 +499,12 @@ public class EasyController implements Initializable {
                 continue;
             }
             for (Titan t : l.getTitans()) {
-                if (titansOnScreen.size() > 60) {
-                    break;
-                }
                 if (titansOnScreen.containsKey(t)) {
                     continue;
                 }
                 double width = 70;
                 int code = getTitanCode(t);
-                String titanPath = getTitanPath(code);
-                Image titanImage = new Image(getClass().getResource(titanPath).toString());
+                Image titanImage = getTitanPath(code);
                 ImageView newTitan = new ImageView();
                 setTitanSize(code, newTitan);
                 newTitan.setFitHeight(width * 1.367);
@@ -606,13 +599,13 @@ public class EasyController implements Initializable {
         }
     }
 
-    public String getTitanPath(int code) {
+    public Image getTitanPath(int code) {
         switch (code) {
-            case 1: return "/game/gui/assets/Pure.png";
-//            case 2: return "/game/gui/assets/Abnormal.png";
-            case 3: return "/game/gui/assets/Armored.png";
-            case 4: return "/game/gui/assets/Colossal.png";
-            default: return "/game/gui/assets/Armored.png";
+            case 1: return weaponImg1;
+            case 2: return weaponImg2;
+            case 3: return weaponImg3;
+            case 4: return weaponImg4;
+            default: return weaponImg2;
         }
     }
 
@@ -645,5 +638,60 @@ public class EasyController implements Initializable {
         this.mediaPlayer.stop();
         scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
         stage.setScene(scene);
+        stage.setResizable(false);
+    }
+    @FXML
+    public void aiTurnAction (ActionEvent event) {
+        int danger = 0;
+        int laneNum = 0;
+        for (int i = 0; i < allLanes.length; i++) {
+            if (!allLanes[i].isLaneLost()) {
+                if (allLanes[i].getDangerLevel() >= danger) {
+                    danger = allLanes[i].getDangerLevel();
+                    laneNum = i;
+                }
+            }
+        }
+        Label cannon = weaponCountLabels[laneNum][0];
+        Label spear = weaponCountLabels[laneNum][1];
+        Label wallTrap = weaponCountLabels[laneNum][3];
+        if (phase.getText().equals("EARLY")) {
+            if (spear == null || Integer.parseInt(spear.getText()) < 5) {
+                if (Integer.parseInt(resources.getText()) >= 25)
+                    completePurchase(2,allLanes[laneNum]);
+                else
+                    battle.passTurn();
+            }
+            else {
+                if (Integer.parseInt(resources.getText()) >= 25)
+                    completePurchase(1, allLanes[laneNum]);
+                else
+                    battle.passTurn();
+            }
+        }
+        else if (cannon == null || phase.getText().equals("INTENSE") || Integer.parseInt(turn.getText()) < 40) {
+            if (Integer.parseInt(resources.getText()) >= 25)
+                completePurchase(1,allLanes[laneNum]);
+            else
+                battle.passTurn();
+        }
+        else {
+            if (wallTrap == null || Integer.parseInt(wallTrap.getText()) < 20) {
+                if (Integer.parseInt(resources.getText()) >= 75)
+                    completePurchase(4,allLanes[laneNum]);
+                else if (Integer.parseInt(resources.getText()) >= 25)
+                    completePurchase(1,allLanes[laneNum]);
+                else
+                    battle.passTurn();
+            }
+            else {
+                if (Integer.parseInt(resources.getText()) >= 25)
+                    completePurchase(1, allLanes[laneNum]);
+                else
+                    battle.passTurn();
+            }
+        }
+        performCancel();
+        viewTurn();
     }
 }

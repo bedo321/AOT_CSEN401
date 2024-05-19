@@ -22,7 +22,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -42,7 +41,7 @@ import java.util.*;
 
 import static game.gui.MainController.volume;
 
-public class HardController implements Initializable {
+public class alak implements Initializable {
     AudioClip mediaPlayer;
     Battle battle;
     Lane lane1;
@@ -405,7 +404,7 @@ public class HardController implements Initializable {
         performCancel();
     }
     @FXML
-    public void actionEvent(MouseEvent event) {
+    public void actionEvent(ActionEvent event) {
         weaponwindow.setVisible(true);
         buyweapon.setVisible(true);
         passturn.setVisible(true);
@@ -709,113 +708,5 @@ public class HardController implements Initializable {
         scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
         stage.setScene(scene);
         stage.setResizable(false);
-    }
-    @FXML
-    public void aiTurnAction (ActionEvent event) {
-        int danger = 0;
-        int laneNum = 0;
-        for (int i = 0; i < allLanes.length; i++) {
-            if (!allLanes[i].isLaneLost()) {
-                if (allLanes[i].getDangerLevel() >= danger) {
-                    danger = allLanes[i].getDangerLevel();
-                    laneNum = i;
-                }
-            }
-        }
-        Label cannon = weaponCountLabels[laneNum][0];
-        Label spear = weaponCountLabels[laneNum][1];
-        Label wallTrap = weaponCountLabels[laneNum][3];
-        if (phase.getText().equals("EARLY")) {
-            if (spear == null || Integer.parseInt(spear.getText()) < 5) {
-                if (Integer.parseInt(resources.getText()) >= 25)
-                    completePurchase(2,allLanes[laneNum]);
-                else
-                    battle.passTurn();
-            }
-            else {
-                if (Integer.parseInt(resources.getText()) >= 25)
-                    completePurchase(1, allLanes[laneNum]);
-                else
-                    battle.passTurn();
-            }
-        }
-        else if (cannon == null || phase.getText().equals("INTENSE") || Integer.parseInt(turn.getText()) < 40) {
-            if (Integer.parseInt(resources.getText()) >= 25)
-                completePurchase(1,allLanes[laneNum]);
-            else
-                battle.passTurn();
-        }
-        else {
-            if (wallTrap == null || Integer.parseInt(wallTrap.getText()) < 20) {
-                if (Integer.parseInt(resources.getText()) >= 75)
-                    completePurchase(4,allLanes[laneNum]);
-                else if (Integer.parseInt(resources.getText()) >= 25)
-                    completePurchase(1,allLanes[laneNum]);
-                else
-                    battle.passTurn();
-            }
-            else {
-                if (Integer.parseInt(resources.getText()) >= 25)
-                    completePurchase(1, allLanes[laneNum]);
-                else
-                    battle.passTurn();
-            }
-        }
-        performCancel();
-        viewTurn();
-    }
-    @FXML
-    public void aiTurnActionKey (KeyEvent event) {
-        int danger = 0;
-        int laneNum = 0;
-        for (int i = 0; i < allLanes.length; i++) {
-            if (!allLanes[i].isLaneLost()) {
-                if (allLanes[i].getDangerLevel() >= danger) {
-                    danger = allLanes[i].getDangerLevel();
-                    laneNum = i;
-                }
-            }
-        }
-        Label cannon = weaponCountLabels[laneNum][0];
-        Label spear = weaponCountLabels[laneNum][1];
-        Label wallTrap = weaponCountLabels[laneNum][3];
-        if (phase.getText().equals("EARLY")) {
-            if (spear == null || Integer.parseInt(spear.getText()) < 5) {
-                if (Integer.parseInt(resources.getText()) >= 25)
-                    completePurchase(2,allLanes[laneNum]);
-                else
-                    battle.passTurn();
-            }
-            else {
-                if (Integer.parseInt(resources.getText()) >= 25)
-                    completePurchase(1, allLanes[laneNum]);
-                else
-                    battle.passTurn();
-            }
-        }
-        else if (cannon == null || phase.getText().equals("INTENSE") || Integer.parseInt(turn.getText()) < 40) {
-            if (Integer.parseInt(resources.getText()) >= 25)
-                completePurchase(1,allLanes[laneNum]);
-            else
-                battle.passTurn();
-        }
-        else {
-            if (wallTrap == null || Integer.parseInt(wallTrap.getText()) < 20) {
-                if (Integer.parseInt(resources.getText()) >= 75)
-                    completePurchase(4,allLanes[laneNum]);
-                else if (Integer.parseInt(resources.getText()) >= 25)
-                    completePurchase(1,allLanes[laneNum]);
-                else
-                    battle.passTurn();
-            }
-            else {
-                if (Integer.parseInt(resources.getText()) >= 25)
-                    completePurchase(1, allLanes[laneNum]);
-                else
-                    battle.passTurn();
-            }
-        }
-        performCancel();
-        viewTurn();
     }
 }

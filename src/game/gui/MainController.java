@@ -67,7 +67,7 @@ public class MainController extends Application implements Initializable {
         stage.setTitle("Attack On Titan JavaFX");
         stage.setScene(scene);
         stage.show();
-
+        stage.setResizable(false);
     }
 
     public static void main(String[] args) {
@@ -163,6 +163,7 @@ public class MainController extends Application implements Initializable {
         this.mediaPlayer.stop();
         scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
         stage.setScene(scene);
+        stage.setResizable(false);
     }
 
     public void switchToHard(MouseEvent event) throws IOException {
@@ -172,6 +173,7 @@ public class MainController extends Application implements Initializable {
         this.mediaPlayer.stop();
         scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
         stage.setScene(scene);
+        stage.setResizable(false);
     }
 
 }

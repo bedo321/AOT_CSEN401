@@ -347,7 +347,7 @@
             <Font name="Press Start 2P Regular" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="aiTurn" layoutX="3.0" layoutY="110.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="AI Turn" textFill="#4d0e0c">
+      <Button fx:id="aiTurn" layoutX="3.0" layoutY="110.0" mnemonicParsing="false" onAction="#aiTurnAction" prefHeight="48.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="AI Turn" textFill="#4d0e0c">
          <font>
             <Font name="Press Start 2P Regular" size="12.0" />
          </font>

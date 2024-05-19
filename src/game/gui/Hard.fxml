@@ -8,54 +8,119 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.gui.HardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.gui.HardController">
     <children>
-        <ImageView fx:id="background" fitHeight="397.0" fitWidth="740.0" layoutX="114.0" layoutY="83.0" pickOnBounds="true">
+        <ImageView fx:id="background" fitHeight="374.0" fitWidth="1166.0" layoutX="114.0" layoutY="347.0" pickOnBounds="true">
             <image>
                 <Image url="@assets/GrassLanes.jpeg" />
             </image>
         </ImageView>
-        <ImageView fitHeight="75.0" fitWidth="740.0" layoutX="114.0" layoutY="8.0" pickOnBounds="true">
+        <ImageView fitHeight="282.0" fitWidth="1166.0" layoutX="114.0" layoutY="66.0" pickOnBounds="true">
             <image>
-                <Image url="@assets/img_2.png" />
+                <Image url="@assets/GrassLanes2.jpeg" />
             </image>
         </ImageView>
-        <ImageView fx:id="wall3" fitHeight="78.0" fitWidth="29.0" layoutX="114.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@assets/Wall.jpeg" />
-            </image>
-        </ImageView>
-        <ImageView fx:id="wall2" fitHeight="78.0" fitWidth="29.0" layoutX="114.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="wall3" fitHeight="61.0" fitWidth="14.0" layoutX="114.0" layoutY="127.0" pickOnBounds="true">
             <image>
                 <Image url="@assets/Wall.jpeg" />
             </image>
         </ImageView>
-        <ImageView fx:id="wall1" fitHeight="78.0" fitWidth="29.0" layoutX="114.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="wall2" fitHeight="61.0" fitWidth="14.0" layoutX="113.0" layoutY="255.0" pickOnBounds="true">
             <image>
                 <Image url="@assets/Wall.jpeg" />
             </image>
         </ImageView>
-        <ImageView fitHeight="48.0" fitWidth="854.0" pickOnBounds="true">
+        <ImageView fx:id="wall1" fitHeight="61.0" fitWidth="14.0" layoutX="113.0" layoutY="379.0" pickOnBounds="true">
+            <image>
+                <Image url="@assets/Wall.jpeg" />
+            </image>
+        </ImageView>
+      <ImageView fitHeight="61.0" fitWidth="14.0" layoutX="113.0" layoutY="506.0" pickOnBounds="true">
+         <image>
+            <Image url="@assets/Wall.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="61.0" fitWidth="14.0" layoutX="113.0" layoutY="629.0" pickOnBounds="true">
+         <image>
+            <Image url="@assets/Wall.jpeg" />
+         </image>
+      </ImageView>
+        <ImageView fitHeight="67.0" fitWidth="1280.0" pickOnBounds="true">
             <image>
                 <Image url="@assets/Filler.jpeg" />
             </image>
         </ImageView>
-        <ImageView fitHeight="432.0" fitWidth="118.0" layoutX="-4.0" layoutY="48.0" pickOnBounds="true">
+        <ImageView fitHeight="673.0" fitWidth="118.0" layoutX="-4.0" layoutY="52.0" pickOnBounds="true">
             <image>
                 <Image url="@assets/Filler.jpeg" />
             </image>
         </ImageView>
-        <HBox fx:id="weaponSpace1" layoutX="116.0" layoutY="50.0" prefHeight="67.0" prefWidth="733.0" spacing="20.0" />
-        <HBox fx:id="weaponSpace2" layoutX="119.0" layoutY="182.0" prefHeight="67.0" prefWidth="733.0" />
-        <HBox fx:id="weaponSpace3" layoutX="118.0" layoutY="316.0" prefHeight="67.0" prefWidth="733.0" />
-        <GridPane fx:id="laneGrid" alignment="CENTER" layoutX="114.0" layoutY="83.0" prefHeight="397.0" prefWidth="740.0">
+        <GridPane fx:id="weaponSpace1" layoutX="115.0" layoutY="68.0" prefHeight="57.0" prefWidth="1000.0">
             <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+        </GridPane>
+        <GridPane fx:id="weaponSpace2" layoutX="114.0" layoutY="192.0" prefHeight="61.0" prefWidth="1000.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+        </GridPane>
+        <GridPane fx:id="weaponSpace3" alignment="CENTER" layoutX="114.0" layoutY="321.0" prefHeight="61.0" prefWidth="1000.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+        </GridPane>
+      <GridPane fx:id="weaponSpace4" alignment="CENTER" layoutX="114.0" layoutY="441.0" prefHeight="61.0" prefWidth="1000.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <GridPane fx:id="weaponSpace5" alignment="CENTER" layoutX="114.0" layoutY="566.0" prefHeight="61.0" prefWidth="1000.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+        <GridPane fx:id="laneGrid" alignment="CENTER" layoutX="114.0" layoutY="99.0" prefHeight="622.0" prefWidth="1166.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -68,194 +133,315 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="171.0" minHeight="10.0" prefHeight="131.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="143.0" minHeight="10.0" prefHeight="138.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="153.0" minHeight="10.0" prefHeight="131.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="205.0" minHeight="10.0" prefHeight="95.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="205.0" minHeight="10.0" prefHeight="125.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="215.0" minHeight="10.0" prefHeight="125.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="285.0" minHeight="10.0" prefHeight="122.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="127.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
             </rowConstraints>
         </GridPane>
-        <GridPane layoutX="114.0" prefHeight="48.0" prefWidth="740.0">
+        <GridPane layoutX="110.0" layoutY="-6.0" prefHeight="75.0" prefWidth="1166.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="132.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="83.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="135.0" minWidth="10.0" prefWidth="83.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="89.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="10.0" prefWidth="82.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="127.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="81.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="75.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="211.0" minWidth="10.0" prefWidth="211.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="10.0" prefWidth="133.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.0" minWidth="10.0" prefWidth="153.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.0" minWidth="0.0" prefWidth="146.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="272.0" minWidth="0.0" prefWidth="142.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="167.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="10.0" prefWidth="114.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="91.0" />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="57.0" prefWidth="141.0" text="Resources" textAlignment="CENTER" textFill="#edffa3">
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="177.0" prefWidth="211.0" text="Resources" textAlignment="CENTER" textFill="#edffa3">
                     <font>
-                        <Font name="Press Start 2P Regular" size="14.0" />
+                        <Font name="Press Start 2P Regular" size="18.0" />
                     </font>
                 </Label>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="106.0" text="Score" textAlignment="CENTER" textFill="#edffa3" GridPane.columnIndex="2">
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="130.0" prefWidth="155.0" text="Score" textAlignment="CENTER" textFill="#edffa3" GridPane.columnIndex="2">
                     <font>
-                        <Font name="Press Start 2P Regular" size="14.0" />
+                        <Font name="Press Start 2P Regular" size="18.0" />
                     </font>
                 </Label>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="133.0" text="Phase" textFill="#edffa3" GridPane.columnIndex="4">
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="210.0" prefWidth="143.0" text="Phase" textFill="#edffa3" GridPane.columnIndex="4">
                     <font>
-                        <Font name="Press Start 2P Regular" size="14.0" />
+                        <Font name="Press Start 2P Regular" size="18.0" />
                     </font>
                 </Label>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="132.0" text="Turn" textFill="#edffa3" GridPane.columnIndex="6">
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="172.0" prefWidth="115.0" text="Turn" textFill="#edffa3" GridPane.columnIndex="6">
                     <font>
-                        <Font name="Press Start 2P Regular" size="14.0" />
+                        <Font name="Press Start 2P Regular" size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="resources" alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="100.0" text="Label" textFill="#8af5e5" GridPane.columnIndex="1">
+                <Label fx:id="resources" contentDisplay="CENTER" prefHeight="147.0" prefWidth="135.0" text="Label" textFill="#8af5e5" GridPane.columnIndex="1">
                     <font>
-                        <Font name="Press Start 2P Regular" size="14.0" />
+                        <Font name="Press Start 2P Regular" size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="score" alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="100.0" text="Label" textAlignment="CENTER" textFill="#8af5e5" GridPane.columnIndex="3">
+                <Label fx:id="score" contentDisplay="CENTER" prefHeight="143.0" prefWidth="147.0" text="Label" textAlignment="CENTER" textFill="#8af5e5" GridPane.columnIndex="3">
                     <font>
-                        <Font name="Press Start 2P Regular" size="14.0" />
+                        <Font name="Press Start 2P Regular" size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="phase" alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="156.0" text="Label" textFill="#8af5e5" GridPane.columnIndex="5">
+                <Label fx:id="phase" contentDisplay="CENTER" prefHeight="179.0" prefWidth="168.0" text="Label" textFill="#8af5e5" GridPane.columnIndex="5">
                     <font>
-                        <Font name="Press Start 2P Regular" size="14.0" />
+                        <Font name="Press Start 2P Regular" size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="turn" alignment="CENTER" contentDisplay="CENTER" prefHeight="48.0" prefWidth="117.0" text="Label" textFill="#8af5e5" GridPane.columnIndex="7">
+                <Label fx:id="turn" contentDisplay="CENTER" prefHeight="226.0" prefWidth="92.0" text="Label" textFill="#8af5e5" GridPane.columnIndex="7">
                     <font>
-                        <Font name="Press Start 2P Regular" size="14.0" />
+                        <Font name="Press Start 2P Regular" size="18.0" />
                     </font>
                 </Label>
             </children>
         </GridPane>
-        <Button fx:id="passturn" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="8.0" mnemonicParsing="false" onAction="#passTurn" opacity="0.95" prefHeight="48.0" prefWidth="87.0" style="-fx-background-color: #6f9a63;" text="Pass Turn" textAlignment="CENTER" textFill="#4d0e0cce" wrapText="true">
+        <Rectangle fx:id="laneLostBorder1" arcHeight="5.0" arcWidth="5.0" height="67.0" layoutX="114.0" layoutY="125.0" opacity="0.4" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="1166.0" />
+        <Rectangle fx:id="laneLostBorder2" arcHeight="5.0" arcWidth="5.0" height="61.0" layoutX="114.0" layoutY="255.0" opacity="0.4" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="1166.0" />
+        <Rectangle fx:id="laneLostBorder3" arcHeight="5.0" arcWidth="5.0" height="61.0" layoutX="114.0" layoutY="378.0" opacity="0.4" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="1166.0" />
+      <Rectangle fx:id="laneLostBorder4" arcHeight="5.0" arcWidth="5.0" height="61.0" layoutX="114.0" layoutY="506.0" opacity="0.4" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="1166.0" />
+      <Rectangle fx:id="laneLostBorder5" arcHeight="5.0" arcWidth="5.0" height="61.0" layoutX="114.0" layoutY="629.0" opacity="0.4" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="1166.0" />
+        <Label fx:id="lane1lost" layoutX="414.0" layoutY="139.0" prefHeight="42.0" prefWidth="528.0" text="Lane 1 Lost" textFill="#ff6a6a" visible="false">
+            <font>
+                <Font name="Press Start 2P Regular" size="48.0" />
+            </font>
+        </Label>
+        <Label fx:id="lane2lost" layoutX="414.0" layoutY="265.0" prefHeight="42.0" prefWidth="528.0" text="Lane 2 Lost" textAlignment="CENTER" textFill="#ff6a6a" visible="false">
+            <font>
+                <Font name="Press Start 2P Regular" size="48.0" />
+            </font>
+        </Label>
+        <Label fx:id="lane3lost" layoutX="414.0" layoutY="389.0" prefHeight="42.0" prefWidth="528.0" text="Lane 3 Lost" textAlignment="CENTER" textFill="#ff6a6a" visible="false">
+            <font>
+                <Font name="Press Start 2P Regular" size="48.0" />
+            </font>
+        </Label>
+      <Label fx:id="lane4lost" layoutX="414.0" layoutY="516.0" prefHeight="42.0" prefWidth="528.0" text="Lane 4 Lost" textAlignment="CENTER" textFill="#ff6a6a" visible="false">
+         <font>
+            <Font name="Press Start 2P Regular" size="48.0" />
+         </font>
+      </Label>
+      <Label fx:id="lane5lost" layoutX="414.0" layoutY="637.0" prefHeight="42.0" prefWidth="528.0" text="Lane 5 Lost" textAlignment="CENTER" textFill="#ff6a6a" visible="false">
+         <font>
+            <Font name="Press Start 2P Regular" size="48.0" />
+         </font>
+      </Label>
+        <Label fx:id="lane1dangerlevel" layoutX="3.0" layoutY="113.0" prefHeight="67.0" prefWidth="104.0" text="DangerLevel: 0" textFill="#a3ffac" wrapText="true">
+            <font>
+                <Font name="Press Start 2P Regular" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="lane2dangerlevel" layoutX="3.0" layoutY="244.0" prefHeight="67.0" prefWidth="104.0" text="DangerLevel: 0" textFill="#a3ffac" wrapText="true">
+            <font>
+                <Font name="Press Start 2P Regular" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="lane3dangerlevel" layoutX="5.0" layoutY="363.0" prefHeight="67.0" prefWidth="104.0" text="DangerLevel: 0" textFill="#a3ffac" wrapText="true">
+            <font>
+                <Font name="Press Start 2P Regular" size="16.0" />
+            </font>
+        </Label>
+      <Label fx:id="lane4dangerlevel" layoutX="5.0" layoutY="493.0" prefHeight="67.0" prefWidth="104.0" text="DangerLevel: 0" textFill="#a3ffac" wrapText="true">
+         <font>
+            <Font name="Press Start 2P Regular" size="16.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="bar4" layoutX="23.0" layoutY="563.0" prefHeight="18.0" prefWidth="87.0" progress="1.0" />
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1.0" layoutY="563.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/heart.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="hp4" layoutX="28.0" layoutY="568.0" text="Label">
+         <font>
+            <Font name="Press Start 2P Regular" size="9.0" />
+         </font>
+      </Label>
+      <Label fx:id="lane5dangerlevel" layoutX="5.0" layoutY="616.0" prefHeight="67.0" prefWidth="104.0" text="DangerLevel: 0" textFill="#a3ffac" wrapText="true">
+         <font>
+            <Font name="Press Start 2P Regular" size="16.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="bar5" layoutX="23.0" layoutY="686.0" prefHeight="18.0" prefWidth="87.0" progress="1.0" />
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1.0" layoutY="686.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/heart.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="hp5" layoutX="28.0" layoutY="691.0" text="Label">
+         <font>
+            <Font name="Press Start 2P Regular" size="9.0" />
+         </font>
+      </Label>
+      <Button fx:id="action" layoutX="3.0" layoutY="5.0" mnemonicParsing="false" onKeyPressed="#aiTurnActionKey" onMouseClicked="#actionEvent" opacity="0.9" prefHeight="90.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="Action" textFill="#36230b">
+         <font>
+            <Font name="Press Start 2P Regular" size="14.0" />
+         </font>
+      </Button>
+        <Rectangle fx:id="weaponwindow" arcHeight="5.0" arcWidth="5.0" fill="#3c5361" height="654.0" layoutX="114.0" layoutY="67.0" opacity="0.85" stroke="BLACK" strokeType="INSIDE" visible="false" width="1166.0" />
+        <Button fx:id="passturn" alignment="CENTER" contentDisplay="CENTER" layoutX="304.0" layoutY="297.0" mnemonicParsing="false" onAction="#passTurn" opacity="0.95" prefHeight="102.0" prefWidth="221.0" style="-fx-background-color: #6f9a63;" text="Pass Turn" textAlignment="CENTER" textFill="#282828cf" visible="false" wrapText="true">
+            <font>
+                <Font name="Press Start 2P Regular" size="28.0" />
+            </font>
+        </Button>
+        <Button fx:id="buyweapon" alignment="CENTER" contentDisplay="CENTER" layoutX="585.0" layoutY="297.0" mnemonicParsing="false" onAction="#buyWeapon" opacity="0.95" prefHeight="102.0" prefWidth="221.0" style="-fx-background-color: #6f9a63;" text="Buy Weapon" textAlignment="CENTER" textFill="#262626cf" visible="false" wrapText="true">
+            <font>
+                <Font name="Press Start 2P Regular" size="26.0" />
+            </font>
+        </Button>
+      <Button fx:id="aiTurn" alignment="CENTER" contentDisplay="CENTER" layoutX="859.0" layoutY="298.0" mnemonicParsing="false" onAction="#aiTurnAction" opacity="0.95" prefHeight="102.0" prefWidth="221.0" style="-fx-background-color: #6f9a63;" text="AI Turn" textAlignment="CENTER" textFill="#262626cf" visible="false" wrapText="true">
+         <font>
+            <Font name="Press Start 2P Regular" size="26.0" />
+         </font>
+      </Button>
+        <Button fx:id="piercingCannon" layoutX="288.0" layoutY="255.0" mnemonicParsing="false" onAction="#antiTitanShell" prefHeight="102.0" prefWidth="251.0" style="-fx-background-color: #6f9a63;" text="Anti-Titan Shell" textAlignment="CENTER" visible="false" wrapText="true">
+            <font>
+                <Font name="Press Start 2P Regular" size="22.0" />
+            </font>
+        </Button>
+        <Button fx:id="sniperCannon" layoutX="841.0" layoutY="255.0" mnemonicParsing="false" onAction="#longRangeSpear" prefHeight="102.0" prefWidth="251.0" style="-fx-background-color: #6f9a63;" text="Long Range Spear" textAlignment="CENTER" visible="false" wrapText="true">
+            <font>
+                <Font name="Press Start 2P Regular" size="22.0" />
+            </font>
+        </Button>
+        <Button fx:id="volleySpreadCannon" alignment="CENTER" contentDisplay="CENTER" layoutX="288.0" layoutY="543.0" mnemonicParsing="false" onAction="#wallSpreadCannon" prefHeight="102.0" prefWidth="251.0" style="-fx-background-color: #6f9a63;" text="Wall Spread Cannon" textAlignment="CENTER" visible="false" wrapText="true">
+            <font>
+                <Font name="Press Start 2P Regular" size="22.0" />
+            </font>
+        </Button>
+        <Button fx:id="wallTrap" contentDisplay="CENTER" layoutX="841.0" layoutY="543.0" mnemonicParsing="false" onAction="#ProximityTrap" prefHeight="102.0" prefWidth="251.0" style="-fx-background-color: #6f9a63;" text="Proximity Trap" textAlignment="CENTER" visible="false" wrapText="true">
+            <font>
+                <Font name="Press Start 2P Regular" size="22.0" />
+            </font>
+        </Button>
+        <ProgressBar fx:id="bar1" layoutX="23.0" layoutY="187.0" prefHeight="18.0" prefWidth="87.0" progress="1.0" />
+        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@assets/heart.png" />
+            </image>
+        </ImageView>
+        <ProgressBar fx:id="bar2" layoutX="23.0" layoutY="323.0" prefHeight="18.0" prefWidth="87.0" progress="1.0" />
+        <ProgressBar fx:id="bar3" layoutX="23.0" layoutY="433.0" prefHeight="18.0" prefWidth="87.0" progress="1.0" />
+        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@assets/heart.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@assets/heart.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="hp1" layoutX="28.0" layoutY="191.0" text="Label">
+            <font>
+                <Font name="Press Start 2P Regular" size="9.0" />
+            </font>
+        </Label>
+        <Label fx:id="hp2" layoutX="28.0" layoutY="327.0" text="Label">
+            <font>
+                <Font name="Press Start 2P Regular" size="9.0" />
+            </font>
+        </Label>
+        <Label fx:id="hp3" layoutX="28.0" layoutY="438.0" text="Label">
+            <font>
+                <Font name="Press Start 2P Regular" size="9.0" />
+            </font>
+        </Label>
+        <Label fx:id="notEnoughResources" alignment="CENTER" layoutX="300.0" layoutY="77.0" prefHeight="39.0" prefWidth="733.0" text="You don't have enough resources!" textAlignment="CENTER" textFill="#ff6464" visible="false">
+            <font>
+                <Font name="Press Start 2P Regular" size="22.0" />
+            </font>
+        </Label>
+        <Label fx:id="invalidLane" alignment="CENTER" contentDisplay="CENTER" layoutX="302.0" layoutY="77.0" prefHeight="39.0" prefWidth="733.0" text="This lane is no longer active!" textAlignment="CENTER" textFill="#ff6464" visible="false">
+            <font>
+                <Font name="Press Start 2P Regular" size="22.0" />
+            </font>
+        </Label>
+        <Button fx:id="buy1" alignment="CENTER" contentDisplay="CENTER" layoutX="199.0" layoutY="248.0" mnemonicParsing="false" onAction="#buyLane1" prefHeight="75.0" prefWidth="178.0" style="-fx-background-color: #6f9a63;" text="Lane 1" visible="false">
+            <font>
+                <Font name="Press Start 2P Regular" size="24.0" />
+            </font>
+        </Button>
+        <Button fx:id="buy2" alignment="CENTER" contentDisplay="CENTER" layoutX="393.0" layoutY="248.0" mnemonicParsing="false" onAction="#buyLane2" prefHeight="75.0" prefWidth="178.0" style="-fx-background-color: #6f9a63;" text="Lane 2" visible="false">
+            <font>
+                <Font name="Press Start 2P Regular" size="24.0" />
+            </font>
+        </Button>
+        <Button fx:id="buy3" alignment="CENTER" contentDisplay="CENTER" layoutX="589.0" layoutY="249.0" mnemonicParsing="false" onAction="#buyLane3" prefHeight="75.0" prefWidth="178.0" style="-fx-background-color: #6f9a63;" text="Lane 3" visible="false">
+            <font>
+                <Font name="Press Start 2P Regular" size="24.0" />
+            </font>
+        </Button>
+      <Button fx:id="buy4" alignment="CENTER" contentDisplay="CENTER" layoutX="785.0" layoutY="248.0" mnemonicParsing="false" onAction="#buyLane4" prefHeight="75.0" prefWidth="178.0" style="-fx-background-color: #6f9a63;" text="Lane 4" visible="false">
+         <font>
+            <Font name="Press Start 2P Regular" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="buy5" alignment="CENTER" contentDisplay="CENTER" layoutX="987.0" layoutY="247.0" mnemonicParsing="false" onAction="#buyLane5" prefHeight="75.0" prefWidth="178.0" style="-fx-background-color: #6f9a63;" text="Lane 5" visible="false">
+         <font>
+            <Font name="Press Start 2P Regular" size="24.0" />
+         </font>
+      </Button>
+        <Button fx:id="cancel" layoutX="618.0" layoutY="612.0" mnemonicParsing="false" onAction="#cancel" prefHeight="67.0" prefWidth="148.0" style="-fx-background-color: #6f9a63;" text="Cancel" visible="false">
+            <font>
+                <Font name="Press Start 2P Regular" size="18.0" />
+            </font>
+        </Button>
+        <ImageView fx:id="weapon1" fitHeight="150.0" fitWidth="200.0" layoutX="253.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@assets/cannon.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="weapon2" fitHeight="150.0" fitWidth="200.0" layoutX="835.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@assets/Long%20Range%20Spear%203.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="weapon3" fitHeight="150.0" fitWidth="200.0" layoutX="253.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@assets/Wall%20Spread%20Cannon.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="weapon4" fitHeight="150.0" fitWidth="200.0" layoutX="838.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@assets/Proximity%20Trap.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="weapontxt1" layoutX="407.0" layoutY="127.0" lineSpacing="7.0" prefHeight="123.0" prefWidth="197.0" text="Type:Piercing Cannon Price:25 Damage:10" textFill="#edffa3" visible="false" wrapText="true">
             <font>
                 <Font name="Press Start 2P Regular" size="15.0" />
             </font>
-        </Button>
-        <Label fx:id="lane1lost" layoutX="200.0" layoutY="130.0" prefHeight="57.0" prefWidth="564.0" text="Lane 1 Lost" textFill="#ff6a6a" visible="false">
+        </Label>
+        <Label fx:id="weapontxt2" layoutX="979.0" layoutY="108.0" lineSpacing="7.0" prefHeight="144.0" prefWidth="166.0" text="Type:Sniper Cannon Price:25 Damage:35" textFill="#edffa3" visible="false" wrapText="true">
             <font>
-                <Font name="Press Start 2P Regular" size="48.0" />
+                <Font name="Press Start 2P Regular" size="15.0" />
             </font>
         </Label>
-        <Label fx:id="lane2lost" layoutX="200.0" layoutY="261.0" prefHeight="54.0" prefWidth="528.0" text="Lane 2 Lost" textAlignment="CENTER" textFill="#ff6a6a" visible="false">
+        <Label fx:id="weapontxt3" layoutX="414.0" layoutY="368.0" lineSpacing="7.0" prefHeight="168.0" prefWidth="204.0" text="Type:Volley Spread Cannon Price:100 Damage:5 Min-Range:20 Max-Range:50" textFill="#edffa3" visible="false" wrapText="true">
             <font>
-                <Font name="Press Start 2P Regular" size="48.0" />
+                <Font name="Press Start 2P Regular" size="15.0" />
             </font>
         </Label>
-        <Label fx:id="lane3lost" layoutX="200.0" layoutY="397.0" prefHeight="42.0" prefWidth="528.0" text="Lane 3 Lost" textAlignment="CENTER" textFill="#ff6a6a" visible="false">
+        <Label fx:id="weapontxt4" layoutX="939.0" layoutY="390.0" lineSpacing="7.0" prefHeight="123.0" prefWidth="153.0" text="Type:Wall Trap Price:75 Damage:100" textFill="#edffa3" visible="false" wrapText="true">
             <font>
-                <Font name="Press Start 2P Regular" size="48.0" />
+                <Font name="Press Start 2P Regular" size="15.0" />
             </font>
         </Label>
-        <Label fx:id="lane1dangerlevel" layoutX="5.0" layoutY="111.0" prefHeight="60.0" prefWidth="75.0" text="DangerLevel: 0" textFill="#a3ffac" wrapText="true">
+        <Label fx:id="defeated1" alignment="CENTER" layoutX="367.0" layoutY="96.0" prefHeight="90.0" prefWidth="650.0" text="You have been defeated!" textAlignment="CENTER" textFill="#ff6464" visible="false">
             <font>
-                <Font name="Press Start 2P Regular" size="12.0" />
+                <Font name="Press Start 2P Regular" size="26.0" />
             </font>
         </Label>
-        <Label fx:id="lane2dangerlevel" layoutX="5.0" layoutY="231.0" prefHeight="102.0" prefWidth="75.0" text="DangerLevel: 0" textFill="#a3ffac" wrapText="true">
+        <Label fx:id="defeated2" alignment="CENTER" contentDisplay="CENTER" layoutX="455.0" layoutY="258.0" prefHeight="67.0" prefWidth="426.0" text="Your Score: 55000" textFill="#edffa3" visible="false">
             <font>
-                <Font name="Press Start 2P Regular" size="12.0" />
+                <Font name="Press Start 2P Regular" size="24.0" />
             </font>
         </Label>
-        <Label fx:id="lane3dangerlevel" layoutX="5.0" layoutY="375.0" prefHeight="67.0" prefWidth="75.0" text="DangerLevel: 0" textFill="#a3ffac" wrapText="true">
+        <Button fx:id="defeated3" alignment="CENTER" contentDisplay="CENTER" layoutX="550.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#switchToTitle" opacity="0.85" prefHeight="96.0" prefWidth="235.0" style="-fx-background-color: #6f9a63;" text="Main Menu" textAlignment="CENTER" visible="false">
             <font>
-                <Font name="Press Start 2P Regular" size="12.0" />
-            </font>
-        </Label>
-        <Button fx:id="buyweapon" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="59.0" mnemonicParsing="false" onAction="#buyWeapon" opacity="0.95" prefHeight="48.0" prefWidth="87.0" style="-fx-background-color: #6f9a63;" text="Buy Weapon" textAlignment="CENTER" textFill="#4d0e0cce" wrapText="true">
-            <font>
-                <Font name="Press Start 2P Regular" size="11.0" />
-            </font>
-        </Button>
-        <Rectangle fx:id="weaponwindow" arcHeight="5.0" arcWidth="5.0" fill="#3c5361" height="432.0" layoutX="112.0" layoutY="48.0" opacity="0.85" stroke="BLACK" strokeType="INSIDE" visible="false" width="742.0" />
-        <Button fx:id="piercingCannon" layoutX="219.0" layoutY="166.0" mnemonicParsing="false" onAction="#antiTitanShell" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: #6f9a63;" text="Anti-Titan Shell" textAlignment="CENTER" visible="false" wrapText="true">
-            <font>
-                <Font name="Press Start 2P Regular" size="12.0" />
-            </font>
-        </Button>
-        <Button fx:id="sniperCannon" layoutX="592.0" layoutY="166.0" mnemonicParsing="false" onAction="#longRangeSpear" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: #6f9a63;" text="Long Range Spear" textAlignment="CENTER" visible="false" wrapText="true">
-            <font>
-                <Font name="Press Start 2P Regular" size="12.0" />
-            </font>
-        </Button>
-        <Button fx:id="volleySpreadCannon" alignment="CENTER" contentDisplay="CENTER" layoutX="219.0" layoutY="349.0" mnemonicParsing="false" onAction="#wallSpreadCannon" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: #6f9a63;" text="Wall Spread Cannon" textAlignment="CENTER" visible="false" wrapText="true">
-            <font>
-                <Font name="Press Start 2P Regular" size="12.0" />
-            </font>
-        </Button>
-        <Button fx:id="wallTrap" contentDisplay="CENTER" layoutX="592.0" layoutY="351.0" mnemonicParsing="false" onAction="#ProximityTrap" prefHeight="48.0" prefWidth="136.0" style="-fx-background-color: #6f9a63;" text="Proximity Trap" textAlignment="CENTER" visible="false" wrapText="true">
-            <font>
-                <Font name="Press Start 2P Regular" size="12.0" />
-            </font>
-        </Button>
-        <ProgressBar fx:id="bar1" layoutX="23.0" layoutY="171.0" prefHeight="18.0" prefWidth="87.0" progress="1.0" />
-        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@assets/heart.png" />
-            </image>
-        </ImageView>
-        <ProgressBar fx:id="bar2" layoutX="23.0" layoutY="306.0" prefHeight="18.0" prefWidth="87.0" progress="1.0" />
-        <ProgressBar fx:id="bar3" layoutX="24.0" layoutY="432.0" prefHeight="18.0" prefWidth="87.0" progress="1.0" />
-        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="1.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@assets/heart.png" />
-            </image>
-        </ImageView>
-        <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="2.0" layoutY="432.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@assets/heart.png" />
-            </image>
-        </ImageView>
-        <Label fx:id="hp1" layoutX="28.0" layoutY="175.0" text="Label">
-            <font>
-                <Font name="Press Start 2P Regular" size="9.0" />
-            </font>
-        </Label>
-        <Label fx:id="hp2" layoutX="28.0" layoutY="310.0" text="Label">
-            <font>
-                <Font name="Press Start 2P Regular" size="9.0" />
-            </font>
-        </Label>
-        <Label fx:id="hp3" layoutX="29.0" layoutY="437.0" text="Label">
-            <font>
-                <Font name="Press Start 2P Regular" size="9.0" />
-            </font>
-        </Label>
-        <Label fx:id="notEnoughResources" layoutX="176.0" layoutY="59.0" text="You don't have enough resources!" textFill="#ff6464" visible="false">
-            <font>
-                <Font name="Press Start 2P Regular" size="18.0" />
-            </font>
-        </Label>
-        <Label fx:id="invalidLane" layoutX="176.0" layoutY="59.0" text="You have picked an invalid lane!" textFill="#ff6464" visible="false">
-            <font>
-                <Font name="Press Start 2P Regular" size="18.0" />
-            </font>
-        </Label>
-        <VBox alignment="CENTER" layoutX="370.0" layoutY="90.0" prefHeight="300.0" prefWidth="240.0" spacing="20.0">
-            <children>
-                <Button fx:id="buy1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buyLane1" prefHeight="60.0" prefWidth="136.0" style="-fx-background-color: #6f9a63;" text="Lane 1" visible="false">
-                    <font>
-                        <Font name="Press Start 2P Regular" size="14.0" />
-                    </font>
-                </Button>
-                <Button fx:id="buy2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buyLane2" prefHeight="60.0" prefWidth="136.0" style="-fx-background-color: #6f9a63;" text="Lane 2" visible="false">
-                    <font>
-                        <Font name="Press Start 2P Regular" size="14.0" />
-                    </font>
-                </Button>
-                <Button fx:id="buy3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buyLane3" prefHeight="60.0" prefWidth="136.0" style="-fx-background-color: #6f9a63;" text="Lane 3" visible="false">
-                    <font>
-                        <Font name="Press Start 2P Regular" size="14.0" />
-                    </font>
-                </Button>
-            </children>
-        </VBox>
-        <Button fx:id="cancel" layoutX="439.0" layoutY="405.0" mnemonicParsing="false" onAction="#cancel" prefHeight="39.0" prefWidth="87.0" style="-fx-background-color: #6f9a63;" text="Cancel" visible="false">
-            <font>
-                <Font name="Press Start 2P Regular" size="10.0" />
+                <Font name="Press Start 2P Regular" size="20.0" />
             </font>
         </Button>
     </children>
