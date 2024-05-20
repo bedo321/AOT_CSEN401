@@ -351,7 +351,7 @@ public class HardController implements Initializable {
     }
 
     @FXML
-    public void passTurn(ActionEvent event) {
+    public void passTurn(MouseEvent event) {
         performCancel();
         battle.passTurn();
         viewTurn();
@@ -376,6 +376,7 @@ public class HardController implements Initializable {
             }
         }
         if (battle.isGameOver()) {
+            action.setDisable(true);
             weaponwindow.setVisible(true);
             defeated1.setVisible(true);
             defeated2.setText("Your Score: " + score.getText());
@@ -405,7 +406,7 @@ public class HardController implements Initializable {
         performCancel();
     }
     @FXML
-    public void actionEvent(MouseEvent event) {
+    public void actionEvent(ActionEvent event) {
         weaponwindow.setVisible(true);
         buyweapon.setVisible(true);
         passturn.setVisible(true);
@@ -643,6 +644,8 @@ public class HardController implements Initializable {
             laneGrid.add(weaponEntity, 0, laneIndex);
             GridPane.setHalignment(weaponEntity, HPos.LEFT);
             GridPane.setValignment(weaponEntity, VPos.BOTTOM);
+            weaponSpace.add(weaponCountLabel, 0, 0);
+            GridPane.setHalignment(weaponCountLabel, HPos.LEFT);
 //            weaponSpaces[laneIndex].add(weaponCountLabel, 0, laneIndex);
             return;
         }
@@ -711,21 +714,33 @@ public class HardController implements Initializable {
         stage.setResizable(false);
     }
     @FXML
-    public void aiTurnAction (ActionEvent event) {
+    public void aiTurnAction (MouseEvent event) {
         int danger = 0;
-        int laneNum = 0;
-        for (int i = 0; i < allLanes.length; i++) {
-            if (!allLanes[i].isLaneLost()) {
-                if (allLanes[i].getDangerLevel() >= danger) {
-                    danger = allLanes[i].getDangerLevel();
-                    laneNum = i;
+        int laneNum;
+        if (Integer.parseInt(turn.getText()) <  5)
+            laneNum = 0;
+        else if (Integer.parseInt(turn.getText()) <  10)
+            laneNum = 1;
+        else if (Integer.parseInt(turn.getText()) <  15)
+            laneNum = 2;
+        else if (Integer.parseInt(turn.getText()) <  20)
+            laneNum = 3;
+        else
+            laneNum = 4;
+        if (Integer.parseInt(turn.getText()) > 35 && Integer.parseInt(turn.getText()) < 40) {
+            for (int i = 0; i < allLanes.length; i++) {
+                if (!allLanes[i].isLaneLost()) {
+                    if (allLanes[i].getDangerLevel() >= danger) {
+                        danger = allLanes[i].getDangerLevel();
+                        laneNum = i;
+                    }
                 }
             }
         }
         Label cannon = weaponCountLabels[laneNum][0];
         Label spear = weaponCountLabels[laneNum][1];
         Label wallTrap = weaponCountLabels[laneNum][3];
-        if (phase.getText().equals("EARLY")) {
+        if (Integer.parseInt(turn.getText()) < 30) {
             if (spear == null || Integer.parseInt(spear.getText()) < 5) {
                 if (Integer.parseInt(resources.getText()) >= 25)
                     completePurchase(2,allLanes[laneNum]);
@@ -739,68 +754,14 @@ public class HardController implements Initializable {
                     battle.passTurn();
             }
         }
-        else if (cannon == null || phase.getText().equals("INTENSE") || Integer.parseInt(turn.getText()) < 40) {
+        else if (cannon == null || Integer.parseInt(turn.getText()) < 50) {
             if (Integer.parseInt(resources.getText()) >= 25)
                 completePurchase(1,allLanes[laneNum]);
             else
                 battle.passTurn();
         }
         else {
-            if (wallTrap == null || Integer.parseInt(wallTrap.getText()) < 20) {
-                if (Integer.parseInt(resources.getText()) >= 75)
-                    completePurchase(4,allLanes[laneNum]);
-                else if (Integer.parseInt(resources.getText()) >= 25)
-                    completePurchase(1,allLanes[laneNum]);
-                else
-                    battle.passTurn();
-            }
-            else {
-                if (Integer.parseInt(resources.getText()) >= 25)
-                    completePurchase(1, allLanes[laneNum]);
-                else
-                    battle.passTurn();
-            }
-        }
-        performCancel();
-        viewTurn();
-    }
-    @FXML
-    public void aiTurnActionKey (KeyEvent event) {
-        int danger = 0;
-        int laneNum = 0;
-        for (int i = 0; i < allLanes.length; i++) {
-            if (!allLanes[i].isLaneLost()) {
-                if (allLanes[i].getDangerLevel() >= danger) {
-                    danger = allLanes[i].getDangerLevel();
-                    laneNum = i;
-                }
-            }
-        }
-        Label cannon = weaponCountLabels[laneNum][0];
-        Label spear = weaponCountLabels[laneNum][1];
-        Label wallTrap = weaponCountLabels[laneNum][3];
-        if (phase.getText().equals("EARLY")) {
-            if (spear == null || Integer.parseInt(spear.getText()) < 5) {
-                if (Integer.parseInt(resources.getText()) >= 25)
-                    completePurchase(2,allLanes[laneNum]);
-                else
-                    battle.passTurn();
-            }
-            else {
-                if (Integer.parseInt(resources.getText()) >= 25)
-                    completePurchase(1, allLanes[laneNum]);
-                else
-                    battle.passTurn();
-            }
-        }
-        else if (cannon == null || phase.getText().equals("INTENSE") || Integer.parseInt(turn.getText()) < 40) {
-            if (Integer.parseInt(resources.getText()) >= 25)
-                completePurchase(1,allLanes[laneNum]);
-            else
-                battle.passTurn();
-        }
-        else {
-            if (wallTrap == null || Integer.parseInt(wallTrap.getText()) < 20) {
+            if (wallTrap == null || Integer.parseInt(wallTrap.getText()) < 15) {
                 if (Integer.parseInt(resources.getText()) >= 75)
                     completePurchase(4,allLanes[laneNum]);
                 else if (Integer.parseInt(resources.getText()) >= 25)

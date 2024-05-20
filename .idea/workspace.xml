@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1742f60-f5bf-4563-bc17-c2e162d2ad04" name="Changes" comment="Basically Finished the Game EZ">
+    <list default="true" id="e1742f60-f5bf-4563-bc17-c2e162d2ad04" name="Changes" comment="GAME COMPLETE (-INSTRUCTIONS)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/gui/Easy.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/Easy.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/gui/EasyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/EasyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gui/Hard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/Hard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/gui/HardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/HardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/gui/assets/Armored.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/assets/Armored.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gui/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gui/Title_Screen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/gui/Title_Screen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/gui/alak.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,20 +49,20 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "show.migrate.to.gradle.popup": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\ana el meshatshat\AOT_CSEN401\src\game\gui\assets" />
@@ -131,7 +134,8 @@
       <workItem from="1715779005765" duration="2449000" />
       <workItem from="1715781473671" duration="16050000" />
       <workItem from="1715862910104" duration="10588000" />
-      <workItem from="1716118826508" duration="18073000" />
+      <workItem from="1716118826508" duration="23310000" />
+      <workItem from="1716205830538" duration="6198000" />
     </task>
     <task id="LOCAL-00001" summary="I firetrucked up and made it work again, I think">
       <option name="closed" value="true" />
@@ -178,7 +182,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716150676085</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="GAME COMPLETE (-INSTRUCTIONS)">
+      <option name="closed" value="true" />
+      <created>1716153189592</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716153189593</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +214,7 @@
     <MESSAGE value="help." />
     <MESSAGE value="Basically Finished the Easy Mode fr fr fr" />
     <MESSAGE value="Basically Finished the Game EZ" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basically Finished the Game EZ" />
+    <MESSAGE value="GAME COMPLETE (-INSTRUCTIONS)" />
+    <option name="LAST_COMMIT_MESSAGE" value="GAME COMPLETE (-INSTRUCTIONS)" />
   </component>
 </project>

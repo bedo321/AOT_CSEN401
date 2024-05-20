@@ -275,13 +275,18 @@
             <Font name="Press Start 2P Regular" size="9.0" />
          </font>
       </Label>
-      <Button fx:id="action" layoutX="3.0" layoutY="5.0" mnemonicParsing="false" onKeyPressed="#aiTurnActionKey" onMouseClicked="#actionEvent" opacity="0.9" prefHeight="90.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="Action" textFill="#36230b">
+      <Button fx:id="action" layoutX="3.0" layoutY="5.0" mnemonicParsing="false" onAction="#actionEvent" opacity="0.9" prefHeight="90.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="Action" textFill="#36230b">
          <font>
             <Font name="Press Start 2P Regular" size="14.0" />
          </font>
       </Button>
         <Rectangle fx:id="weaponwindow" arcHeight="5.0" arcWidth="5.0" fill="#3c5361" height="654.0" layoutX="114.0" layoutY="67.0" opacity="0.85" stroke="BLACK" strokeType="INSIDE" visible="false" width="1166.0" />
-        <Button fx:id="passturn" alignment="CENTER" contentDisplay="CENTER" layoutX="304.0" layoutY="297.0" mnemonicParsing="false" onAction="#passTurn" opacity="0.95" prefHeight="102.0" prefWidth="221.0" style="-fx-background-color: #6f9a63;" text="Pass Turn" textAlignment="CENTER" textFill="#282828cf" visible="false" wrapText="true">
+        <Button fx:id="cancel" layoutX="618.0" layoutY="612.0" mnemonicParsing="false" onAction="#cancel" prefHeight="67.0" prefWidth="148.0" style="-fx-background-color: #6f9a63;" text="Cancel" visible="false">
+            <font>
+                <Font name="Press Start 2P Regular" size="18.0" />
+            </font>
+        </Button>
+        <Button fx:id="passturn" alignment="CENTER" contentDisplay="CENTER" layoutX="304.0" layoutY="297.0" mnemonicParsing="false" onMouseClicked="#passTurn" opacity="0.95" prefHeight="102.0" prefWidth="221.0" style="-fx-background-color: #6f9a63;" text="Pass Turn" textAlignment="CENTER" textFill="#282828cf" visible="false" wrapText="true">
             <font>
                 <Font name="Press Start 2P Regular" size="28.0" />
             </font>
@@ -291,7 +296,7 @@
                 <Font name="Press Start 2P Regular" size="26.0" />
             </font>
         </Button>
-      <Button fx:id="aiTurn" alignment="CENTER" contentDisplay="CENTER" layoutX="859.0" layoutY="298.0" mnemonicParsing="false" onAction="#aiTurnAction" opacity="0.95" prefHeight="102.0" prefWidth="221.0" style="-fx-background-color: #6f9a63;" text="AI Turn" textAlignment="CENTER" textFill="#262626cf" visible="false" wrapText="true">
+      <Button fx:id="aiTurn" alignment="CENTER" contentDisplay="CENTER" layoutX="859.0" layoutY="298.0" mnemonicParsing="false" onMouseClicked="#aiTurnAction" opacity="0.95" prefHeight="102.0" prefWidth="221.0" style="-fx-background-color: #6f9a63;" text="AI Turn" textAlignment="CENTER" textFill="#262626cf" visible="false" wrapText="true">
          <font>
             <Font name="Press Start 2P Regular" size="26.0" />
          </font>
@@ -384,11 +389,6 @@
             <Font name="Press Start 2P Regular" size="24.0" />
          </font>
       </Button>
-        <Button fx:id="cancel" layoutX="618.0" layoutY="612.0" mnemonicParsing="false" onAction="#cancel" prefHeight="67.0" prefWidth="148.0" style="-fx-background-color: #6f9a63;" text="Cancel" visible="false">
-            <font>
-                <Font name="Press Start 2P Regular" size="18.0" />
-            </font>
-        </Button>
         <ImageView fx:id="weapon1" fitHeight="150.0" fitWidth="200.0" layoutX="253.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" visible="false">
             <image>
                 <Image url="@assets/cannon.png" />

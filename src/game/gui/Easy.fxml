@@ -338,7 +338,7 @@
             <Font name="Press Start 2P Regular" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="passturn" alignment="CENTER" contentDisplay="CENTER" layoutX="304.0" layoutY="292.0" mnemonicParsing="false" onAction="#passTurn" opacity="0.95" prefHeight="102.0" prefWidth="221.0" style="-fx-background-color: #6f9a63;" text="Pass Turn" textAlignment="CENTER" textFill="#282828cf" visible="false" wrapText="true">
+      <Button fx:id="passturn" alignment="CENTER" contentDisplay="CENTER" layoutX="304.0" layoutY="292.0" mnemonicParsing="false" onMouseClicked="#passTurn" opacity="0.95" prefHeight="102.0" prefWidth="221.0" style="-fx-background-color: #6f9a63;" text="Pass Turn" textAlignment="CENTER" textFill="#282828cf" visible="false" wrapText="true">
          <font>
             <Font name="Press Start 2P Regular" size="28.0" />
          </font>
@@ -348,12 +348,12 @@
             <Font name="Press Start 2P Regular" size="26.0" />
          </font>
       </Button>
-      <Button fx:id="aiTurn" alignment="CENTER" contentDisplay="CENTER" layoutX="859.0" layoutY="293.0" mnemonicParsing="false" onAction="#aiTurnAction" opacity="0.95" prefHeight="102.0" prefWidth="221.0" style="-fx-background-color: #6f9a63;" text="AI Turn" textAlignment="CENTER" textFill="#262626cf" visible="false" wrapText="true">
+      <Button fx:id="aiTurn" alignment="CENTER" contentDisplay="CENTER" layoutX="859.0" layoutY="293.0" mnemonicParsing="false" onMouseClicked="#aiTurnAction" opacity="0.95" prefHeight="102.0" prefWidth="221.0" style="-fx-background-color: #6f9a63;" text="AI Turn" textAlignment="CENTER" textFill="#262626cf" visible="false" wrapText="true">
          <font>
             <Font name="Press Start 2P Regular" size="26.0" />
          </font>
       </Button>
-      <Button fx:id="action" layoutX="3.0" layoutY="13.0" mnemonicParsing="false" onKeyPressed="#aiTurnActionKey" onMouseClicked="#actionEvent" opacity="0.9" prefHeight="90.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="Action" textFill="#36230b">
+      <Button fx:id="action" layoutX="3.0" layoutY="13.0" mnemonicParsing="false" onAction="#actionEvent" opacity="0.9" prefHeight="90.0" prefWidth="104.0" style="-fx-background-color: #6f9a63;" text="Action" textFill="#36230b">
          <font>
             <Font name="Press Start 2P Regular" size="14.0" />
          </font>

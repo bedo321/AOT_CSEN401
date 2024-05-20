@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.AudioClip;
@@ -58,6 +59,45 @@ public class MainController extends Application implements Initializable {
     public Label error2;
     @FXML
     public Label error3;
+    @FXML
+    public Rectangle box;
+    @FXML
+    public ImageView titan1;
+
+    @FXML
+    public ImageView titan2;
+
+    @FXML
+    public ImageView titan3;
+
+    @FXML
+    public ImageView titan4;
+
+    @FXML
+    public Label titansp1;
+
+    @FXML
+    public Label titansp2;
+
+    @FXML
+    public Label titansp3;
+
+    @FXML
+    public Label titansp4;
+
+    @FXML
+    public Label titantxt1;
+
+    @FXML
+    public Label titantxt2;
+
+    @FXML
+    public Label titantxt3;
+
+    @FXML
+    public Label titantxt4;
+    @FXML
+    public Label titanInfo;
     public static double volume = 0.1;
     @Override
     public void start(Stage stage) throws IOException {
@@ -65,6 +105,7 @@ public class MainController extends Application implements Initializable {
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
         stage.setTitle("Attack On Titan JavaFX");
+        stage.getIcons().add(new Image("file:src/game/gui/assets/AOT ICON.png"));
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
@@ -146,6 +187,21 @@ public class MainController extends Application implements Initializable {
         back.setVisible(true);
         slider.setVisible(true);
         slidertxt.setVisible(true);
+        box.setVisible(true);
+        titan1.setVisible(true);
+        titan2.setVisible(true);
+        titan3.setVisible(true);
+        titan4.setVisible(true);
+        titantxt1.setVisible(true);
+        titantxt2.setVisible(true);
+        titantxt3.setVisible(true);
+        titantxt4.setVisible(true);
+        titansp1.setVisible(true);
+        titansp2.setVisible(true);
+        titansp3.setVisible(true);
+        titansp4.setVisible(true);
+        titanInfo.setVisible(true);
+
     }
     public void Transition4(MouseEvent event) {
         back.setVisible(false);
@@ -154,6 +210,20 @@ public class MainController extends Application implements Initializable {
         settings.setVisible(true);
         start.setVisible(true);
         logo.setVisible(true);
+        box.setVisible(false);
+        titan1.setVisible(false);
+        titan2.setVisible(false);
+        titan3.setVisible(false);
+        titan4.setVisible(false);
+        titantxt1.setVisible(false);
+        titantxt2.setVisible(false);
+        titantxt3.setVisible(false);
+        titantxt4.setVisible(false);
+        titansp1.setVisible(false);
+        titansp2.setVisible(false);
+        titansp3.setVisible(false);
+        titansp4.setVisible(false);
+        titanInfo.setVisible(false);
     }
 
     public void switchToEasy(MouseEvent event) throws IOException {
